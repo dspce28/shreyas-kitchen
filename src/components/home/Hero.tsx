@@ -91,7 +91,6 @@ export function Hero() {
   }, [reduced, paused]);
 
   const slide = SLIDES[index];
-  const image = dishImage(slide.imageSlug);
 
   return (
     <section
@@ -101,35 +100,46 @@ export function Hero() {
       aria-roledescription="carousel"
       aria-label="Shreya's Kitchen highlights"
     >
-      {/* ── Photography ──────────────────────────────────────────── */}
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={slide.imageSlug}
-          className="absolute inset-0 -z-20"
-          initial={{ opacity: 0, scale: reduced ? 1 : 1.06 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{
-            opacity: { duration: reduced ? 0.2 : 1.1, ease: "easeInOut" },
-            // A very slow push-in over the slide's whole life. Any faster and
-            // it becomes a Ken Burns cliché.
-            scale: { duration: INTERVAL / 1000 + 1.2, ease: "linear" },
-          }}
-        >
-          {image?.wide && (
-            <Image
-              src={image.wide}
-              alt=""
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              placeholder="blur"
-              blurDataURL={image.blur}
-              className="object-cover"
-            />
-          )}
-        </motion.div>
-      </AnimatePresence>
+      {/* ── Photography ──────────────────────────────────────────────
+          Every slide stays mounted and cross-fades on opacity, rather than
+          mounting and unmounting through AnimatePresence. Mounting on demand
+          meant slide two decoded only at the moment it was needed, so each
+          transition flashed its blur placeholder first. Stacked and always
+          present, they are all inside the viewport, so the browser fetches
+          them up front and every change after the first is instant. */}
+      <div className="absolute inset-0 -z-20">
+        {SLIDES.map((s, i) => {
+          const img = dishImage(s.imageSlug);
+          if (!img?.wide) return null;
+          const on = i === index;
+          return (
+            <motion.div
+              key={s.imageSlug}
+              className="absolute inset-0"
+              initial={false}
+              animate={{ opacity: on ? 1 : 0, scale: on || reduced ? 1 : 1.06 }}
+              transition={{
+                opacity: { duration: reduced ? 0.2 : 1.1, ease: "easeInOut" },
+                // A very slow push-in across the slide's whole life. Any
+                // faster and it becomes a Ken Burns cliché.
+                scale: { duration: INTERVAL / 1000 + 1.2, ease: "linear" },
+              }}
+              aria-hidden={!on}
+            >
+              <Image
+                src={img.wide}
+                alt=""
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                placeholder="blur"
+                blurDataURL={img.blur}
+                className="object-cover"
+              />
+            </motion.div>
+          );
+        })}
+      </div>
 
       {/* Scrims. These STACK, so both must fade to fully transparent on the
           right — an earlier pair each ended opaque and between them buried
