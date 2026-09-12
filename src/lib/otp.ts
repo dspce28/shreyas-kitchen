@@ -20,6 +20,28 @@ const MAX_SENDS_PER_HOUR = 6;
 
 export class OtpError extends Error {}
 
+/**
+ * Dev mode hands the OTP straight back to the caller. On localhost that is a
+ * convenience; on a public URL it is an open door — anyone could request a
+ * code for any number, including one listed in ADMIN_PHONES, and read it
+ * from the response.
+ *
+ * So in a production build it is refused unless the operator has explicitly
+ * opted in with ALLOW_DEV_OTP=true. Failing closed here is the whole point:
+ * the app should be unusable rather than trivially impersonatable.
+ */
+function assertDevOtpAllowed(): void {
+  const isProd = process.env.NODE_ENV === "production";
+  const optedIn = process.env.ALLOW_DEV_OTP === "true";
+  if (isProd && !optedIn) {
+    throw new OtpError(
+      "Login is not available yet: this deployment has no SMS/WhatsApp sender configured. " +
+        "Set OTP_PROVIDER=whatsapp with your Meta credentials, or set ALLOW_DEV_OTP=true to " +
+        "allow on-screen codes for testing (anyone who reaches this site could then sign in as anyone).",
+    );
+  }
+}
+
 function hashCode(phone: string, code: string): string {
   const secret = process.env.SESSION_SECRET ?? "";
   return createHash("sha256").update(`${phone}:${code}:${secret}`).digest("hex");
@@ -79,6 +101,8 @@ export async function requestOtp(phone: string): Promise<RequestOtpResult> {
     await sendWhatsAppOtp(phone, code);
     return { expiresInSeconds: TTL_SECONDS };
   }
+
+  assertDevOtpAllowed();
 
   // dev: never send, always reveal.
   console.info(`[otp] ${phone} → ${code} (dev mode, not delivered)`);
