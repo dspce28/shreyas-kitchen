@@ -1,6 +1,37 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+
+/**
+ * Safety net for the scroll reveals.
+ *
+ * `whileInView` is driven by IntersectionObserver. If the observer never
+ * fires — a background or throttled tab, an embedded webview, a browser that
+ * suspends observers while the page is not being composited — the element
+ * sits at opacity 0 forever and the content is simply gone. That is a far
+ * worse outcome than losing an animation.
+ *
+ * So after a short grace period we measure the element ourselves and, if it
+ * is genuinely on screen, show it. Content below the fold is untouched and
+ * still animates normally when scrolled to.
+ */
+function useRevealFallback(ref: React.RefObject<HTMLElement | null>, delay = 1200) {
+  const [forced, setForced] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const el = ref.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const onScreen = r.top < window.innerHeight && r.bottom > 0 && r.height > 0;
+      if (onScreen) setForced(true);
+    }, delay);
+    return () => clearTimeout(t);
+  }, [ref, delay]);
+
+  return forced;
+}
 
 /**
  * Scroll-triggered entrance.
@@ -41,6 +72,8 @@ export function Reveal({
   zoom?: boolean;
 }) {
   const reduced = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const forced = useRevealFallback(ref);
   const { x, y } = OFFSET[from];
 
   const variants: Variants = {
@@ -65,9 +98,11 @@ export function Reveal({
 
   return (
     <motion.div
+      ref={ref}
       className={className}
       variants={variants}
       initial="hidden"
+      animate={forced ? "shown" : undefined}
       whileInView="shown"
       viewport={{ once: true, margin: "-80px" }}
     >
@@ -90,11 +125,15 @@ export function RevealGroup({
   className?: string;
 }) {
   const reduced = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const forced = useRevealFallback(ref);
 
   return (
     <motion.div
+      ref={ref}
       className={className}
       initial="hidden"
+      animate={forced ? "shown" : undefined}
       whileInView="shown"
       viewport={{ once: true, margin: "-80px" }}
       variants={{
