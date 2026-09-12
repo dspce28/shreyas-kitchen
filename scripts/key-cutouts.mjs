@@ -22,8 +22,22 @@ const CUTOUT = join(ROOT, "public/menu/cutout");
 const PARTICLE = join(ROOT, "public/menu/particle");
 
 const JOBS = [
-  { file: "Gemini_Generated_Image_kqaaphkqaaphkqaa.png", slug: "quinoa-bowl", tol: 26, max: 900 },
-  { file: "Gemini_Generated_Image_mlizwmmlizwmmliz.png", slug: "thali-plate", tol: 26, max: 900 },
+  // These two arrived already background-removed, with a genuine alpha
+  // channel. They skip the keyer entirely — a hand-cut matte beats anything
+  // this script can infer, particularly around the glass bowl's rim and the
+  // thali's thin steel edge, where our key left residue.
+  {
+    file: "Gemini_Generated_Image_mlizwmmlizwmmliz-removebg-preview.png",
+    slug: "thali-plate",
+    preKeyed: true,
+    max: 900,
+  },
+  {
+    file: "Gemini_Generated_Image_kqaaphkqaaphkqaa-removebg-preview.png",
+    slug: "quinoa-bowl",
+    preKeyed: true,
+    max: 900,
+  },
   {
     file: "Gemini_Generated_Image_ewzp35ewzp35ewzp.png",
     slug: "scatter",
@@ -254,6 +268,20 @@ async function run() {
   console.log("\n  Keying baked-in checkerboards into real alpha\n");
 
   for (const job of JOBS) {
+    // Already has a real alpha channel — just trim, size and compress it.
+    if (job.preKeyed) {
+      const info = await sharp(join(SRC, job.file))
+        .ensureAlpha()
+        .trim({ threshold: 1 })
+        .resize(job.max, job.max, { fit: "inside", withoutEnlargement: true })
+        .webp({ quality: 88, alphaQuality: 100, effort: 5 })
+        .toFile(join(CUTOUT, `${job.slug}.webp`));
+      console.log(
+        `  ${job.slug.padEnd(13)} pre-keyed            ${info.width}x${info.height}  ${Math.round(info.size / 1024)} KB`,
+      );
+      continue;
+    }
+
     const { rgba, W, H, alpha, checks } = await keyImage(
       join(SRC, job.file),
       job.tol,

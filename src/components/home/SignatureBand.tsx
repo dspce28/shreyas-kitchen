@@ -85,17 +85,21 @@ export function SignatureBand() {
             aria-hidden
           />
 
-          {/* Layer 2 — the plate. Rotates continuously; hovering speeds it
-              up. A photograph shot from above can turn in its own plane
-              without giving away that it is flat. */}
+          {/* Layer 2 — the plate, turning on its Y axis.
+              Bounded to ±26° rather than a full revolution: the plate is a
+              flat image, so at 90° it would be edge-on and vanish, and past
+              that it would show a mirrored back. Swinging inside that range
+              reads as a plate turning on a turntable and never inverts.
+              Hovering roughly triples the speed. */}
           <Parallax distance={44} className="absolute inset-0 grid place-items-center">
             <motion.div
-              className="relative w-[82%]"
-              animate={reduced ? {} : { rotate: 360 }}
+              className="relative w-[82%] [transform-style:preserve-3d]"
+              style={{ perspective: 1200 }}
+              animate={reduced ? {} : { rotateY: [-26, 26, -26] }}
               transition={
                 reduced
                   ? {}
-                  : { duration: hovered ? 26 : 110, ease: "linear", repeat: Infinity }
+                  : { duration: hovered ? 7 : 20, ease: "easeInOut", repeat: Infinity }
               }
             >
               <Image

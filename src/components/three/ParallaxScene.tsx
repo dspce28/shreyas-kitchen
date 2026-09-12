@@ -403,22 +403,10 @@ function Scene({
 
       <BokehField reduced={reduced} count={dpr < 1.3 ? 55 : 90} />
 
-      {/* The two assets FLANK the copy column rather than sitting behind it.
-          Centred and full width they swamped the headline — at 88dvh the
-          middle third of this band belongs to the type. */}
-      <FloatingAsset
-        url="/menu/cutout/thali-plate.webp"
-        position={wide ? [-3.7, 1.5, -1.5] : [-1.5, 2.3, -2]}
-        width={wide ? 4.4 : 3.6}
-        scrollRef={scrollRef}
-        pointer={pointer}
-        reduced={reduced}
-        drift={1.6}
-        // Shot from above, so an in-plane spin reads as a plate turning on
-        // the table. Very slow — it should be noticed on the second look.
-        spin={0.055}
-        hoverSpin={5}
-      />
+      {/* The thali used to sit top-left here. It was cropped by the frame
+          edge, crowded the headline, and repeated the plate that now carries
+          the Meal of the Day band immediately below — so this section keeps
+          a single asset and lets the type hold the middle. */}
       <FloatingAsset
         url="/menu/cutout/quinoa-bowl.webp"
         position={wide ? [3.8, -1.7, -0.8] : [1.5, -2.6, -1]}
