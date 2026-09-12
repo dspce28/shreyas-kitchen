@@ -117,7 +117,7 @@ export function About() {
 
           <Link
             href="/menu"
-            className="group mt-9 inline-flex items-center gap-2.5 border-b border-tan/40 pb-1.5 text-[0.8125rem] uppercase tracking-[0.2em] text-tan transition-colors hover:border-tan hover:text-tan-300"
+            className="group mt-9 inline-flex items-center gap-2.5 border-b border-tan/40 pb-1.5 pt-3 text-[0.8125rem] uppercase tracking-[0.2em] text-tan transition-colors hover:border-tan hover:text-tan-300"
           >
             Read the menu
             <ArrowRight

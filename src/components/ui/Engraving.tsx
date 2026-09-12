@@ -30,7 +30,14 @@ export function Engraving({
   return (
     <Parallax
       distance={distance}
-      className={cn("pointer-events-none absolute -z-10 select-none", className)}
+      className={cn(
+        // Hidden on phones. Callers hang these off a negative inset so they
+        // bleed past the edge, which on a 375px screen leaves only a scrap
+        // on screen — and at 7% opacity a scrap earns nothing but layout
+        // risk. Capped on tablets, full size from lg up.
+        "pointer-events-none absolute -z-10 hidden select-none sm:block sm:max-w-[42vw] lg:max-w-none",
+        className,
+      )}
     >
       <Image
         src={`/menu/cutout/engraving-${kind}.webp`}

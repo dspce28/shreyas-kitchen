@@ -56,8 +56,8 @@ export function categoryBanner(categorySlug: string): DishImage | undefined {
  * placeholder. Only genuine variants of the same dish belong here.
  */
 const ALIASES: Record<string, string> = {
-  // Same thali; the rice is the only difference.
-  "meal-of-the-day-brown": "meal-of-the-day-white",
+  // Empty on purpose. The brown-rice meal used to borrow the white-rice
+  // photograph; it now has its own, which actually shows brown rice.
 };
 
 export function dishImageWithAlias(slug: string): DishImage | undefined {

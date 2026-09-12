@@ -76,7 +76,9 @@ export function MenuTabs() {
                   aria-selected={on}
                   onClick={() => setActive(t.slug)}
                   className={cn(
-                    "relative pb-2 font-display text-sm uppercase tracking-[0.22em] transition-colors",
+                    // min-h keeps these a comfortable touch target on a phone,
+                    // where the type alone is only ~20px tall.
+                    "relative flex min-h-11 items-center pb-2 font-display text-sm uppercase tracking-[0.22em] transition-colors",
                     on ? "text-tan" : "text-stone hover:text-cream",
                   )}
                 >
@@ -184,7 +186,7 @@ export function MenuTabs() {
               <li className="pt-2">
                 <Link
                   href={`/menu#${active}`}
-                  className="group inline-flex items-center gap-2.5 border-b border-tan/40 pb-1.5 text-[0.8125rem] uppercase tracking-[0.2em] text-tan transition-colors hover:border-tan hover:text-tan-300"
+                  className="group inline-flex items-center gap-2.5 border-b border-tan/40 pb-1.5 pt-3 text-[0.8125rem] uppercase tracking-[0.2em] text-tan transition-colors hover:border-tan hover:text-tan-300"
                 >
                   Order from {category?.name.toLowerCase()}
                   <ArrowRight

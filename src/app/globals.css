@@ -189,6 +189,16 @@
     white-space: nowrap;
   }
 
+  /* On a phone the wide tracking pushes the word far past both edges, so
+     only its middle is visible and it stops reading as a word at all.
+     Tightening the tracking is what buys the room back — shrinking the type
+     alone would make it too faint to register. */
+  @media (max-width: 640px) {
+    .outline-word {
+      letter-spacing: 0.16em;
+    }
+  }
+
   .rule {
     height: 1px;
     background: linear-gradient(

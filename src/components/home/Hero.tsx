@@ -151,7 +151,7 @@ export function Hero() {
 
       {/* ── Ghosted wordmark ─────────────────────────────────────── */}
       <span
-        className="outline-word pointer-events-none absolute left-1/2 top-[42%] -z-10 -translate-x-1/2 -translate-y-1/2 text-[22vw] leading-none sm:text-[15vw]"
+        className="outline-word pointer-events-none absolute left-1/2 top-[42%] -z-10 -translate-x-1/2 -translate-y-1/2 text-[16vw] leading-none sm:text-[15vw]"
         aria-hidden="true"
       >
         Shreya&rsquo;s
@@ -205,17 +205,24 @@ export function Hero() {
         <div className="mt-14 flex items-center gap-5">
           <div className="flex gap-2.5" role="tablist" aria-label="Choose a slide">
             {SLIDES.map((s, i) => (
+              // The visible indicator is a hairline, but a 1px tap target is
+              // unusable on a phone. The button carries vertical padding to
+              // reach a real hit area; the rule inside stays 1px.
               <button
                 key={s.imageSlug}
                 role="tab"
                 aria-selected={i === index}
                 aria-label={s.head.join(" ")}
                 onClick={() => go(i)}
-                className={cn(
-                  "h-px transition-all duration-500 ease-[var(--ease-out-quint)]",
-                  i === index ? "w-12 bg-tan" : "w-6 bg-white/25 hover:bg-white/50",
-                )}
-              />
+                className="group flex h-11 items-center"
+              >
+                <span
+                  className={cn(
+                    "block h-px transition-all duration-500 ease-[var(--ease-out-quint)]",
+                    i === index ? "w-12 bg-tan" : "w-6 bg-white/25 group-hover:bg-white/50",
+                  )}
+                />
+              </button>
             ))}
           </div>
           <span className="tnum text-xs text-stone">

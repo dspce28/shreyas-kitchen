@@ -39,11 +39,26 @@
     "dish": "/menu/dish/veg-hot-and-sour-soup.webp",
     "blur": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAACQBQCdASoUABQAPu1ur1IppiQiqAgBMB2JQBWAZYMME0EFuQm16MLY8A3HwWFF0J+5443JgAD+as1o3rv9xHXv8AGFUYCn3YdW3J9ZTBdja4qm3ye0HSDOsAV+XiOcuxOHqZ/dcq+KOf6BNkfBzDsEGedoDH9Z0g9icCa5Hgv9KqlCEog4wMuUgbOfnwwfcpTF6JvVNcVV3EQmWs81T9Jm587dCIe6C1ywJqyNIoThh3k5x2D1tok3VrsbH8SBCTWwAAAA"
   },
+  "veg-sweet-corn-soup": {
+    "slug": "veg-sweet-corn-soup",
+    "dish": "/menu/dish/veg-sweet-corn-soup.webp",
+    "blur": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAABQBQCdASoUABQAPu1ur1KppiQiqAgBMB2JYgC7B3gN0AMBpBkSlk0EC/ZimeHW2LtgMAAA/Swq5Z7Ewe0rUXUb40heR2paSrIcRJlETAIAEXuSrrxpTO6mM/OYOBUw6IclC+gNDNnyyAvgQSoRvMlxalzzmf3jQOqjIpNwjE8KjqbsBigTkBNVn8A9vRftql7RgaUHzGoBDp2IOLLB2wwBw0Jt5KXXg9edmJR+IHG1b8+IAAAAAA=="
+  },
   "peanut-salad": {
     "slug": "peanut-salad",
     "dish": "/menu/dish/peanut-salad.webp",
     "wide": "/menu/wide/peanut-salad.webp",
     "blur": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAADQBQCdASoUABQAPu1urlIppiQiqAgBMB2JZAC1F0irgPeqRvW1KWFIIa3I11HGcg+kHFKqRvRAAP5WBVFOZoUm5u0bHhSmcJ0vZsjL4mXcJUoCp9bgTk0tFqvVumP1fhhCJ29uBUVzgF1xL/XyEOetoBx9H3HJMXN23PGRuGCdOqqYiVUE1F3y4v4odPCYVP3lSrLgRm4gsqlZpL/aCPqRbboi1CYiP5eGmoRrEl4aFeWD+sBZYYzu48FxnWlBeBsfYAAA"
+  },
+  "sweet-corn-salad": {
+    "slug": "sweet-corn-salad",
+    "dish": "/menu/dish/sweet-corn-salad.webp",
+    "blur": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAADwBQCdASoUABQAPu1ur1IppiQiqAgBMB2JbACxG9YT/gDQp/ArL/kXGxkj3NN1frXnnY7uY0zmAAD9rjVUKsCvM2SpjTCEFGq6AD7aMckWQFCULFta8aAF7CJev/DC7Sh19rXKSUkU8olTIFE+jFgPUh4zP8/ZOc1ianaPFt8xVpYDCtdYRtB3pV33S7tyU1lkZbW8fRDMn0QsqnmEejWVCftSh+5ilfH/dxXTw5jbcrJqdsIeQXjf34vqmp5qTNjYI4TA2Soq3JgUFQsoAAAA"
+  },
+  "boiled-chana-salad": {
+    "slug": "boiled-chana-salad",
+    "dish": "/menu/dish/boiled-chana-salad.webp",
+    "blur": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAADQBQCdASoUABQAPu1urlIppiQiqAgBMB2JZgCxG8WrgPekPGthKdsESF3ekhsOSpO8oFXmQ8aQAP2uN2CzBEgHVL7qnHWR1ttdm9AaIafBXCiD6YEtSF5y5orOrHxQ7oDQYFFOX5/52ksbQs1sv5/si2FlUE/rA4yFP5TRlcNlAAFgdhqgBkoFcLkP2X3I1MMZLo9S0aiVRTDDJipupBEg6WylsHj+rZerIEe+ECMb5vCoh6jFPS0zZMXtwu/O5Rfn7w6CwAdwCMQAAAA="
   },
   "basket-chaat": {
     "slug": "basket-chaat",
@@ -93,6 +108,17 @@
     "dish": "/menu/dish/meal-of-the-day-white.webp",
     "wide": "/menu/wide/meal-of-the-day-white.webp",
     "blur": "data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAADQBQCdASoUABQAPu1wsFIppiSiqAgBMB2JZAC1G2h+AkgPc+PbGWv0mzaY3+tUBUcuJseSrlG4AP5oTqDCDvpRKG/dH4dOn5dBLNrSXblitXTtKhY3XDTsviFXzlf+bf8M5JAutPgAGCfNG7MJY7dJ7T/4Gc/wzu+wGYPJtjmrtNtN++8bheRGLKVuBXCTZV+HjQEfpip17A/LRLrf2K63/Rtt1dbIi9nHre8l8SiyYFmsSA5P7Sa3tjPtHp3bMOxxxwmIocb1gAAA"
+  },
+  "meal-of-the-day-brown": {
+    "slug": "meal-of-the-day-brown",
+    "dish": "/menu/dish/meal-of-the-day-brown.webp",
+    "wide": "/menu/wide/meal-of-the-day-brown.webp",
+    "blur": "data:image/webp;base64,UklGRuYAAABXRUJQVlA4INoAAACQBQCdASoUABQAPu1ur1IppiQiqAgBMB2JZgCdMxhOAbTQiI7cyVU7XZ0trtBGolkrGqltMAD+eTKfjjEnMaJDt7+GQ1vbT9wRrkNTB8z1Tf5oTRr1l5QES47Rvu/vUWGtziTYjOliPMxtf0K4C/FbVBG9BBFF6ghI0yGBOymBLnyCU0ZpV3H6Rk4PVmribtC5VJTkGjo2WvLGaIVi8r6K8ZPAaujnpRG85gTXWmRjhwiGSdr+Td1fVbkgbek1pEjf0btWgMpE08bbt2AnWFZa6bdweoAC+kAAAA=="
+  },
+  "thali-spread": {
+    "slug": "thali-spread",
+    "wide": "/menu/wide/thali-spread.webp",
+    "blur": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAACQBQCdASoUABQAPu1wsFIppiSiqAgBMB2JagCdMy/lpwvzo7LnT8J1vV9sKPmetuDVwizjAAD+eTKe9s4QLHOE5qApIaAc8ShoP5KqRXYC3GW1WxItrrVzlOPMBYWeomQtpRE9MNprOwlmif3kI24AdT6gFCi1TVp51v+SrjuiJqlui6L3TEZEDk63QRHnQ7nzh4xUZq/rcayspwbwebjiIKw5pIXEDI18pQdm+id/E93duxmBGLmawetWUIR5QwEHDuTk0nahx5z3+MALnACAAAA="
   },
   "green-detox-juice": {
     "slug": "green-detox-juice",

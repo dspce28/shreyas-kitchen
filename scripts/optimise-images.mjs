@@ -50,6 +50,7 @@ const IMAGES = [
     // In-frame menu card prints "40", which contradicts the real price.
     crop: { l: 0.05, t: 0, w: 0.95, h: 0.78 },
   },
+  { file: "Gemini_Generated_Image_ytmxfytmxfytmxfy.png", slug: "veg-sweet-corn-soup" },
 
   // ── Salads ─────────────────────────────────────────────────────────
   {
@@ -59,6 +60,8 @@ const IMAGES = [
     // Card repeats "PEANUT SALAD" and invents "PROANUT SALAD".
     crop: { l: 0, t: 0.3, w: 0.86, h: 0.7 },
   },
+  { file: "Gemini_Generated_Image_2dnxos2dnxos2dnx.png", slug: "sweet-corn-salad" },
+  { file: "Gemini_Generated_Image_w6v1o5w6v1o5w6v1.png", slug: "boiled-chana-salad" },
 
   // ── Evening snacks ─────────────────────────────────────────────────
   {
@@ -96,6 +99,22 @@ const IMAGES = [
     slug: "meal-of-the-day-white",
     banner: true,
     crop: { l: 0, t: 0.22, w: 0.92, h: 0.78 },
+  },
+  // The brown-rice meal gets its own photograph rather than borrowing the
+  // white-rice one — this spread actually shows brown rice, so the alias it
+  // used to rely on can go.
+  {
+    file: "Gemini_Generated_Image_uy2jn8uy2jn8uy2j.png",
+    slug: "meal-of-the-day-brown",
+    banner: true,
+  },
+  // A second full spread, banner only. The widest, most generous shot in the
+  // set — kept available for hero and section use.
+  {
+    file: "Gemini_Generated_Image_yr2vfcyr2vfcyr2v.png",
+    slug: "thali-spread",
+    banner: true,
+    bannerOnly: true,
   },
 
   // ── Juices, shakes ─────────────────────────────────────────────────

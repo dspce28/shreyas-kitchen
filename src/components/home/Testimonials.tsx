@@ -143,17 +143,22 @@ export function Testimonials() {
 
           <div className="flex gap-2.5" role="tablist" aria-label="Choose a quote">
             {QUOTES.map((_, i) => (
+              // Padded to a real touch target; the rule inside stays 1px.
               <button
                 key={i}
                 role="tab"
                 aria-selected={i === index}
                 aria-label={`Quote ${i + 1}`}
                 onClick={() => setIndex(i)}
-                className={cn(
-                  "h-px transition-all duration-500 ease-[var(--ease-out-quint)]",
-                  i === index ? "w-10 bg-tan" : "w-5 bg-white/25 hover:bg-white/50",
-                )}
-              />
+                className="group flex h-11 items-center"
+              >
+                <span
+                  className={cn(
+                    "block h-px transition-all duration-500 ease-[var(--ease-out-quint)]",
+                    i === index ? "w-10 bg-tan" : "w-5 bg-white/25 group-hover:bg-white/50",
+                  )}
+                />
+              </button>
             ))}
           </div>
 

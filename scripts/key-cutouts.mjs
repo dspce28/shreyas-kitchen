@@ -39,12 +39,16 @@ const JOBS = [
     max: 900,
   },
   {
-    file: "Gemini_Generated_Image_ewzp35ewzp35ewzp.png",
+    // Also pre-keyed. Our own key of the raw file left speckles of surviving
+    // background around each bean — the dark checker and roasted coffee sit
+    // too close in value to separate cleanly. A hand-cut matte is worth more
+    // here than the extra resolution of the original.
+    file: "Gemini_Generated_Image_ewzp35ewzp35ewzp-removebg-preview.png",
     slug: "scatter",
-    tol: 30,
+    preKeyed: true,
     max: 1200,
     // Split into individual sprites for the particle layer.
-    explode: { count: 14, minPx: 900, pad: 6 },
+    explode: { count: 14, minPx: 240, pad: 4 },
   },
   // Engraved botanicals for the decorative parallax layer. White line art on
   // a dark checker is the easiest case in the set — the two are at opposite
@@ -69,6 +73,19 @@ const JOBS = [
 
 const near = (d, i, c, tol) =>
   Math.abs(d[i] - c[0]) <= tol && Math.abs(d[i + 1] - c[1]) <= tol && Math.abs(d[i + 2] - c[2]) <= tol;
+
+/**
+ * Loads a file that already carries a real alpha channel, in the same shape
+ * keyImage returns — so pre-keyed art flows through the identical bounding
+ * box, resize and sprite-explode pipeline rather than a parallel one.
+ */
+async function loadPreKeyed(path) {
+  const { data, info } = await sharp(path).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { width: W, height: H } = info;
+  const alpha = Buffer.alloc(W * H);
+  for (let k = 0; k < W * H; k++) alpha[k] = data[k * 4 + 3];
+  return { rgba: data, W, H, alpha, checks: null };
+}
 
 /** Keys the checkerboard and returns { rgba, W, H, alpha }. */
 async function keyImage(path, tol, lineArt = false) {
@@ -268,25 +285,9 @@ async function run() {
   console.log("\n  Keying baked-in checkerboards into real alpha\n");
 
   for (const job of JOBS) {
-    // Already has a real alpha channel — just trim, size and compress it.
-    if (job.preKeyed) {
-      const info = await sharp(join(SRC, job.file))
-        .ensureAlpha()
-        .trim({ threshold: 1 })
-        .resize(job.max, job.max, { fit: "inside", withoutEnlargement: true })
-        .webp({ quality: 88, alphaQuality: 100, effort: 5 })
-        .toFile(join(CUTOUT, `${job.slug}.webp`));
-      console.log(
-        `  ${job.slug.padEnd(13)} pre-keyed            ${info.width}x${info.height}  ${Math.round(info.size / 1024)} KB`,
-      );
-      continue;
-    }
-
-    const { rgba, W, H, alpha, checks } = await keyImage(
-      join(SRC, job.file),
-      job.tol,
-      Boolean(job.lineArt),
-    );
+    const { rgba, W, H, alpha, checks } = job.preKeyed
+      ? await loadPreKeyed(join(SRC, job.file))
+      : await keyImage(join(SRC, job.file), job.tol, Boolean(job.lineArt));
     const raw = { width: W, height: H, channels: 4 };
 
     const box = bbox(alpha, W, H);
@@ -310,8 +311,9 @@ async function run() {
       .toFile(join(CUTOUT, `${job.slug}.webp`));
 
     console.log(
-      `  ${job.slug.padEnd(13)} checker=[${checks.map((c) => c[0]).join(",")}]  ` +
-        `${info.width}x${info.height}  ${Math.round(info.size / 1024)} KB`,
+      `  ${job.slug.padEnd(13)} ` +
+        (checks ? `checker=[${checks.map((c) => c[0]).join(",")}]` : "pre-keyed        ") +
+        `  ${info.width}x${info.height}  ${Math.round(info.size / 1024)} KB`,
     );
 
     // ── Explode into individual particle sprites ────────────────────
