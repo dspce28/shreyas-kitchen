@@ -169,7 +169,7 @@ export function CartDrawer({ open, onClose }: { open: boolean; onClose: () => vo
               </div>
               <div className="flex items-baseline justify-between border-t border-white/[0.07] pt-2 text-cream">
                 <dt className="font-display text-lg">Total</dt>
-                <dd className="tnum font-display text-xl text-brass-300">
+                <dd className="price-script text-[1.75rem]">
                   {quoting && !quote ? (
                     <Loader2 size={16} className="animate-spin" aria-label="Calculating" />
                   ) : (

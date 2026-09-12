@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 /**
- * A brass thali — the Meal of the Day, modelled.
+ * A tan thali — the Meal of the Day, modelled.
  *
  * The coffee cup this replaced only ever represented one section of the menu.
  * A thali is the kitchen's actual signature: "two seasonal sabzis, four fulka
@@ -99,7 +99,7 @@ export function Thali({ reduced }: { reduced: boolean }) {
   // Slightly brushed rather than mirror-polished. At metalness 1 / roughness
   // 0.26 the plate's inner wall mirrored the dark environment and read as a
   // hole punched through the middle of the composition.
-  const brass = (extra?: Partial<THREE.MeshStandardMaterialParameters>) => (
+  const tan = (extra?: Partial<THREE.MeshStandardMaterialParameters>) => (
     <meshStandardMaterial
       color="#caa863"
       roughness={0.36}
@@ -114,13 +114,13 @@ export function Thali({ reduced }: { reduced: boolean }) {
     <group ref={group} rotation={[THALI_TILT, 0, 0]}>
       {/* Plate */}
       <mesh geometry={plateGeo} castShadow receiveShadow>
-        {brass()}
+        {tan()}
       </mesh>
 
       {/* Katori 1 — dal */}
       <group position={DAL_POSITION}>
         <mesh geometry={katoriGeo} castShadow receiveShadow>
-          {brass({ color: "#bfa05c", envMapIntensity: 1.6 })}
+          {tan({ color: "#bfa05c", envMapIntensity: 1.6 })}
         </mesh>
         <mesh geometry={fillGeo} position={[0, 0.215, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <meshStandardMaterial color="#d9a53c" roughness={0.38} metalness={0.1} />
@@ -130,7 +130,7 @@ export function Thali({ reduced }: { reduced: boolean }) {
       {/* Katori 2 — seasonal sabzi */}
       <group position={[0.06, 0.22, -0.74]}>
         <mesh geometry={katoriGeo} castShadow receiveShadow>
-          {brass({ color: "#bfa05c", envMapIntensity: 1.6 })}
+          {tan({ color: "#bfa05c", envMapIntensity: 1.6 })}
         </mesh>
         <mesh geometry={fillGeo} position={[0, 0.215, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <meshStandardMaterial color="#57753c" roughness={0.72} metalness={0.02} />
@@ -140,7 +140,7 @@ export function Thali({ reduced }: { reduced: boolean }) {
       {/* Katori 3 — raita */}
       <group position={[0.74, 0.22, -0.44]}>
         <mesh geometry={katoriGeo} castShadow receiveShadow>
-          {brass({ color: "#bfa05c", envMapIntensity: 1.6 })}
+          {tan({ color: "#bfa05c", envMapIntensity: 1.6 })}
         </mesh>
         <mesh geometry={fillGeo} position={[0, 0.215, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <meshStandardMaterial color="#efe9dc" roughness={0.55} metalness={0.02} />

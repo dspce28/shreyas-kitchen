@@ -6,9 +6,9 @@ import { STATUS_LABEL, type OrderStatus } from "@/lib/types";
 const TONE: Record<OrderStatus, string> = {
   pending: "border-ember/35 bg-ember/12 text-ember",
   accepted: "border-sage/35 bg-sage/12 text-sage-300",
-  preparing: "border-brass/35 bg-brass/12 text-brass-300",
-  ready: "border-brass/45 bg-brass/18 text-brass-300",
-  out_for_delivery: "border-brass/45 bg-brass/18 text-brass-300",
+  preparing: "border-tan/35 bg-tan/12 text-tan-300",
+  ready: "border-tan/45 bg-tan/18 text-tan-300",
+  out_for_delivery: "border-tan/45 bg-tan/18 text-tan-300",
   delivered: "border-sage/40 bg-sage/15 text-sage-300",
   rejected: "border-danger/35 bg-danger/12 text-danger",
   cancelled: "border-white/12 bg-white/5 text-stone",

@@ -140,7 +140,7 @@ export function AccountPanel() {
             onClick={() => setCreating(true)}
             className="mt-4 flex w-full items-center gap-3 rounded-2xl border border-dashed border-white/15 px-4 py-7 text-left transition hover:border-sage/45"
           >
-            <MapPin size={18} className="text-brass" aria-hidden />
+            <MapPin size={18} className="text-tan" aria-hidden />
             <span className="text-sm text-sand">
               No addresses saved yet. Add one to speed up checkout.
             </span>
@@ -162,7 +162,7 @@ export function AccountPanel() {
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-medium text-cream">{a.label}</span>
                       {a.is_default && (
-                        <span className="inline-flex items-center gap-1 rounded border border-brass/30 px-1.5 text-[0.625rem] uppercase tracking-wider text-brass-300">
+                        <span className="inline-flex items-center gap-1 rounded border border-tan/30 px-1.5 text-[0.625rem] uppercase tracking-wider text-tan-300">
                           <Star size={9} aria-hidden />
                           Default
                         </span>

@@ -179,7 +179,7 @@ export function OrderQueue() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="tnum font-display text-xl text-brass-300">
+                    <p className="price-script text-[1.75rem]">
                       {rupees(order.total_paise)}
                     </p>
                     <p

@@ -16,7 +16,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const VARIANTS: Record<Variant, string> = {
   // Light sage fill with a lit top edge. A pale button on a dark green ground
   // gives the strongest contrast in the palette, and reads fresh rather than
-  // gilded — brass is kept for the wordmark and prices instead.
+  // gilded — tan is kept for the wordmark and prices instead.
   primary:
     "bg-gradient-to-b from-sage-300 to-sage-600 text-ink-900 font-medium " +
     "shadow-[0_1px_0_0_rgba(255,255,255,0.5)_inset,0_12px_28px_-12px_rgba(156,191,143,0.7)] " +

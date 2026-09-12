@@ -135,7 +135,7 @@ export function AddressForm({
           type="checkbox"
           checked={form.is_default}
           onChange={(e) => set("is_default", e.target.checked)}
-          className="h-4 w-4 accent-[var(--color-brass)]"
+          className="h-4 w-4 accent-[var(--color-tan)]"
         />
         Deliver here by default
       </label>

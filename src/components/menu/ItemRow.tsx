@@ -94,7 +94,7 @@ export function ItemRow({
             )}
 
             {item.is_favourite && (
-              <span className="rounded-md border border-brass/30 bg-brass/10 px-1.5 py-0.5 text-[0.625rem] uppercase tracking-[0.12em] text-brass-300">
+              <span className="rounded-md border border-tan/30 bg-tan/10 px-1.5 py-0.5 text-[0.625rem] uppercase tracking-[0.12em] text-tan-300">
                 House favourite
               </span>
             )}
@@ -140,7 +140,7 @@ export function ItemRow({
         </div>
 
         <div className="flex shrink-0 flex-col items-end gap-2.5">
-          <span className="tnum font-display text-xl text-cream">{rupees(item.price_paise)}</span>
+          <span className="price-script text-[1.75rem]">{rupees(item.price_paise)}</span>
 
           <motion.button
             whileTap={unavailable ? undefined : { scale: 0.92 }}

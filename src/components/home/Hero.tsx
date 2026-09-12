@@ -1,101 +1,223 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
-import Hero3D from "@/components/three/Hero3D";
 import { STORE } from "@/data/menu";
+import { dishImage } from "@/lib/dish-image";
+import { cn } from "@/lib/utils";
 
 /**
- * The first screen. The WebGL cup sits behind the type rather than beside it,
- * so the layout holds at every width without a separate mobile composition.
+ * Full-bleed photo hero.
+ *
+ * Three things carry the look: an oversized ghosted wordmark behind
+ * everything, a calligraphic eyebrow over a feather-light uppercase
+ * headline, and one word of that headline in tan.
+ *
+ * The slides cross-fade rather than sliding sideways — a horizontal slide of
+ * a full-bleed photograph reads as a carousel widget, where a cross-dissolve
+ * reads as a film cut.
  */
+
+interface Slide {
+  imageSlug: string;
+  script: string;
+  /** Split so exactly one word can be tinted. */
+  head: [string, string];
+  body: string;
+  href: string;
+  cta: string;
+}
+
+const SLIDES: Slide[] = [
+  {
+    imageSlug: "moong-dal-chilla",
+    script: "Welcome to Shreya's",
+    head: ["Fresh", "Every Morning"],
+    body: "Breakfast from eight. Chillas hit the pan when you order them, never before.",
+    href: "/menu#breakfast",
+    cta: "See breakfast",
+  },
+  {
+    imageSlug: "meal-of-the-day-white",
+    script: "The meal of the day",
+    head: ["A Full", "Plate"],
+    body: "Two seasonal sabzis, four fulka roti, dal and rice. Cooked the way it is cooked at home.",
+    href: "/menu#rice-and-meals",
+    cta: "See today's meal",
+  },
+  {
+    imageSlug: "basket-chaat",
+    script: "Three till six",
+    head: ["The Evening", "Chaat"],
+    body: "A crisp edible basket piled high. The three hours the whole building waits for.",
+    href: "/menu#evening-snacks",
+    cta: "See snacks",
+  },
+  {
+    imageSlug: "category-juices-shakes",
+    script: "Pressed to order",
+    head: ["Clean", "& Cold"],
+    body: "Leafy greens, cold-pressed beetroot, spiced buttermilk. Nothing sits, nothing separates.",
+    href: "/menu#juices-shakes",
+    cta: "See drinks",
+  },
+];
+
+const INTERVAL = 6500;
+
 export function Hero() {
   const reduced = useReducedMotion();
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const rise = (delay: number) => ({
-    initial: { opacity: 0, y: reduced ? 0 : 26 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: reduced ? 0.2 : 1, delay, ease: [0.22, 1, 0.36, 1] as const },
-  });
+  const go = useCallback((next: number) => {
+    setIndex(((next % SLIDES.length) + SLIDES.length) % SLIDES.length);
+  }, []);
+
+  // Autoplay, but never while the tab is hidden or the pointer is resting on
+  // the hero — a slide changing under the cursor mid-read is infuriating.
+  useEffect(() => {
+    if (reduced || paused) return;
+    timer.current = setInterval(() => {
+      if (!document.hidden) setIndex((i) => (i + 1) % SLIDES.length);
+    }, INTERVAL);
+    return () => {
+      if (timer.current) clearInterval(timer.current);
+    };
+  }, [reduced, paused]);
+
+  const slide = SLIDES[index];
+  const image = dishImage(slide.imageSlug);
 
   return (
-    <section className="relative isolate flex min-h-[92dvh] flex-col justify-center overflow-hidden px-4 pb-16 pt-10 sm:px-6">
-      {/* The 3D scene, centred and pushed behind the copy. */}
-      <Hero3D className="pointer-events-none absolute inset-0 -z-10 translate-y-[8%] sm:translate-y-0" />
-
-      {/* Keeps the type legible over the brightest part of the render:
-          a soft wash behind the copy column, not the whole frame. */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(85%_70%_at_28%_50%,rgba(18,26,22,0.88),transparent_70%)] sm:bg-[radial-gradient(55%_70%_at_22%_50%,rgba(18,26,22,0.9),transparent_72%)]" />
-
-      <div className="mx-auto w-full max-w-6xl text-center sm:text-left">
-        <motion.p {...rise(0.1)} className="eyebrow">
-          {STORE.tagline}
-        </motion.p>
-
-        <motion.h1
-          {...rise(0.2)}
-          className="mt-6 text-balance text-[3.25rem] leading-[0.94] tracking-[-0.03em] sm:text-[5.5rem] lg:text-[6.5rem]"
-        >
-          <span className="foil">Shreya&rsquo;s</span>
-          <br />
-          <span className="text-cream">Kitchen</span>
-        </motion.h1>
-
-        <motion.p
-          {...rise(0.34)}
-          className="mx-auto mt-7 max-w-md text-pretty text-[0.9375rem] leading-relaxed text-cream-dim sm:mx-0 sm:text-lg"
-        >
-          {STORE.promise}
-        </motion.p>
-
+    <section
+      className="relative isolate flex min-h-[92dvh] flex-col justify-center overflow-hidden"
+      onPointerEnter={() => setPaused(true)}
+      onPointerLeave={() => setPaused(false)}
+      aria-roledescription="carousel"
+      aria-label="Shreya's Kitchen highlights"
+    >
+      {/* ── Photography ──────────────────────────────────────────── */}
+      <AnimatePresence initial={false}>
         <motion.div
-          {...rise(0.46)}
-          className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-start"
+          key={slide.imageSlug}
+          className="absolute inset-0 -z-20"
+          initial={{ opacity: 0, scale: reduced ? 1 : 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            opacity: { duration: reduced ? 0.2 : 1.1, ease: "easeInOut" },
+            // A very slow push-in over the slide's whole life. Any faster and
+            // it becomes a Ken Burns cliché.
+            scale: { duration: INTERVAL / 1000 + 1.2, ease: "linear" },
+          }}
         >
-          <Link
-            href="/menu"
-            className="group inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-sage-300 to-sage-600 px-8 text-[0.9375rem] font-medium text-ink-900 shadow-[0_1px_0_0_rgba(255,255,255,0.5)_inset,0_16px_40px_-14px_rgba(156,191,143,0.75)] transition-all duration-300 hover:brightness-105 active:translate-y-px sm:w-auto"
-          >
-            Order now
-            <ArrowRight
-              size={16}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-              aria-hidden
+          {image?.wide && (
+            <Image
+              src={image.wide}
+              alt=""
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={image.blur}
+              className="object-cover"
             />
-          </Link>
-          <Link
-            href="/combos"
-            className="glass inline-flex h-13 w-full items-center justify-center rounded-2xl px-8 text-[0.9375rem] text-cream transition-all duration-300 hover:border-sage/45 sm:w-auto"
+          )}
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Scrims. These STACK, so both must fade to fully transparent on the
+          right — an earlier pair each ended opaque and between them buried
+          the photograph completely.
+          One darkens the left where the copy sits; one anchors the bottom
+          edge into the page. */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/75 to-transparent sm:via-ink/55" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/85 via-transparent to-transparent" />
+
+      {/* ── Ghosted wordmark ─────────────────────────────────────── */}
+      <span
+        className="outline-word pointer-events-none absolute left-1/2 top-[42%] -z-10 -translate-x-1/2 -translate-y-1/2 text-[22vw] leading-none sm:text-[15vw]"
+        aria-hidden="true"
+      >
+        Shreya&rsquo;s
+      </span>
+
+      {/* ── Copy ─────────────────────────────────────────────────── */}
+      <div className="mx-auto w-full max-w-6xl px-4 pb-24 pt-24 sm:px-6">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: reduced ? 0 : 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: reduced ? 0 : -14 }}
+            transition={{ duration: reduced ? 0.2 : 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-2xl"
           >
-            See the combos
-          </Link>
-        </motion.div>
+            <p className="eyebrow-script">{slide.script}</p>
 
-        <motion.p
-          {...rise(0.58)}
-          className="mt-9 inline-flex items-center gap-2 text-xs text-stone"
-        >
-          <MapPin size={13} className="text-sage/70" aria-hidden />
+            <h1 className="mt-3 text-[2.75rem] sm:text-6xl lg:text-7xl">
+              <span className="text-cream">{slide.head[0]} </span>
+              <span className="text-tan">{slide.head[1]}</span>
+            </h1>
+
+            <p className="mt-6 max-w-lg text-pretty text-[0.9375rem] leading-relaxed text-cream-dim sm:text-base">
+              {slide.body}
+            </p>
+
+            <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+              <Link
+                href={slide.href}
+                className="group inline-flex h-13 w-full items-center justify-center gap-2.5 bg-gradient-to-b from-sage-300 to-sage-600 px-8 text-[0.8125rem] font-medium uppercase tracking-[0.18em] text-ink-900 transition-all duration-300 hover:brightness-105 active:translate-y-px sm:w-auto"
+              >
+                {slide.cta}
+                <ArrowRight
+                  size={15}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden
+                />
+              </Link>
+              <Link
+                href="/menu"
+                className="inline-flex h-13 w-full items-center justify-center border border-white/15 px-8 text-[0.8125rem] uppercase tracking-[0.18em] text-cream transition-all duration-300 hover:border-tan/50 hover:text-tan-300 sm:w-auto"
+              >
+                Full menu
+              </Link>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* ── Slide controls ─────────────────────────────────────── */}
+        <div className="mt-14 flex items-center gap-5">
+          <div className="flex gap-2.5" role="tablist" aria-label="Choose a slide">
+            {SLIDES.map((s, i) => (
+              <button
+                key={s.imageSlug}
+                role="tab"
+                aria-selected={i === index}
+                aria-label={s.head.join(" ")}
+                onClick={() => go(i)}
+                className={cn(
+                  "h-px transition-all duration-500 ease-[var(--ease-out-quint)]",
+                  i === index ? "w-12 bg-tan" : "w-6 bg-white/25 hover:bg-white/50",
+                )}
+              />
+            ))}
+          </div>
+          <span className="tnum text-xs text-stone">
+            {String(index + 1).padStart(2, "0")} / {String(SLIDES.length).padStart(2, "0")}
+          </span>
+        </div>
+
+        <p className="mt-8 inline-flex items-center gap-2 text-xs text-stone">
+          <MapPin size={13} className="text-tan/70" aria-hidden />
           {STORE.location}
-        </motion.p>
+        </p>
       </div>
-
-      {/* Scroll cue */}
-      {!reduced && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="pointer-events-none absolute inset-x-0 bottom-7 flex justify-center"
-        >
-          <motion.span
-            animate={{ y: [0, 7, 0] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-            className="h-10 w-px bg-gradient-to-b from-transparent via-brass/50 to-transparent"
-          />
-        </motion.div>
-      )}
     </section>
   );
 }

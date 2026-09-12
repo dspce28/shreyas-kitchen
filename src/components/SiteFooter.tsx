@@ -47,11 +47,11 @@ export function SiteFooter() {
             <p className="eyebrow mb-3">Find us</p>
             <ul className="space-y-3 text-sm text-sand">
               <li className="flex gap-2.5">
-                <MapPin size={15} className="mt-0.5 shrink-0 text-brass" aria-hidden />
+                <MapPin size={15} className="mt-0.5 shrink-0 text-tan" aria-hidden />
                 <span>{STORE.location}</span>
               </li>
               <li className="flex gap-2.5">
-                <Phone size={15} className="mt-0.5 shrink-0 text-brass" aria-hidden />
+                <Phone size={15} className="mt-0.5 shrink-0 text-tan" aria-hidden />
                 <a
                   href={`tel:${STORE.phone}`}
                   className="tnum underline-offset-4 transition hover:text-cream hover:underline"

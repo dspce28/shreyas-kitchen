@@ -17,7 +17,7 @@ import { Motes } from "./Motes";
  *   · One shadow-casting light, 1024² map. Contact shadows are a cheap
  *     ground-plane approximation rather than a second shadow camera.
  *   · The environment is built from Lightformers, not a downloaded HDRI —
- *     nothing to fetch, and the brass rim still gets real reflections.
+ *     nothing to fetch, and the tan rim still gets real reflections.
  *   · The canvas stops rendering entirely when scrolled out of view.
  */
 
@@ -191,7 +191,7 @@ function Scene({ reduced, dpr }: { reduced: boolean; dpr: number }) {
           scale={[3, 4, 1]}
           target={[0, 0, 0]}
         />
-        {/* Sage softbox — this is what the brass picks up along its edges,
+        {/* Sage softbox — this is what the tan picks up along its edges,
             and what ties the plate to the botanical palette. */}
         <Lightformer
           intensity={1.35}

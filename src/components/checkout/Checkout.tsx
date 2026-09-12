@@ -190,7 +190,7 @@ export function Checkout() {
                 onClick={() => setAddressSheet(true)}
                 className="mt-4 flex w-full items-center gap-3 rounded-2xl border border-dashed border-white/15 px-4 py-6 text-left transition hover:border-sage/45"
               >
-                <MapPin size={18} className="text-brass" aria-hidden />
+                <MapPin size={18} className="text-tan" aria-hidden />
                 <span className="text-sm text-sand">
                   Add your first delivery address to continue.
                 </span>
@@ -212,7 +212,7 @@ export function Checkout() {
                         name="address"
                         checked={addressId === a.id}
                         onChange={() => setAddressId(a.id)}
-                        className="mt-1 h-4 w-4 shrink-0 accent-[var(--color-brass)]"
+                        className="mt-1 h-4 w-4 shrink-0 accent-[var(--color-tan)]"
                       />
                       <span className="min-w-0 flex-1">
                         <span className="flex items-center gap-2">
@@ -311,7 +311,7 @@ export function Checkout() {
             </div>
             <div className="flex items-baseline justify-between border-t border-white/[0.07] pt-2.5">
               <dt className="font-display text-lg text-cream">Total</dt>
-              <dd className="tnum font-display text-2xl text-brass-300">
+              <dd className="price-script text-[2rem]">
                 {rupees(quote?.total_paise ?? 0)}
               </dd>
             </div>

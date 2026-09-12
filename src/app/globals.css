@@ -3,16 +3,20 @@
 /* ══════════════════════════════════════════════════════════════════════
    Shreya's Kitchen — design tokens
 
-   The printed menu sets the brand: Cormorant Garamond for display, Jost for
-   everything functional. The palette is built around an espresso ground with
-   brass for luxury and a sage green that carries the "wholesome, fresh"
-   half of the promise — gold alone reads as a steakhouse.
+   Three typefaces, each with one job:
+     · Oswald    — condensed sans, set light and wide in caps. Headlines.
+     · Tangerine — formal calligraphy. Eyebrows and prices, nothing else.
+     · Josefin   — geometric sans. All functional text.
+
+   The palette keeps the botanical green ground and pairs it with a muted
+   tan rather than a bright brass. Sage stays the action colour so buttons
+   read fresh; tan is decorative only.
    ══════════════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* Grounds — deep forest, not espresso. The first version was near-black
-     plus brass, which reads steakhouse; a green ground reads botanical and
-     keeps the "fresh, wholesome" half of the brand promise intact. */
+  /* Grounds — deep forest, not espresso. Near-black plus bright brass read
+     as a steakhouse; a green ground reads botanical and keeps the "fresh,
+     wholesome" half of the brand promise intact. */
   --color-ink-900: #0b110e;
   --color-ink: #121a16;
   --color-ink-800: #18221d;
@@ -32,20 +36,27 @@
   --color-sage-600: #6e9161;
   --color-sage-700: #4f6b45;
 
-  /* Brass — demoted to a restrained secondary: the wordmark, prices,
-     hairlines. Used sparingly it still signals premium; used everywhere it
-     was the whisky-bar problem. */
-  --color-brass-300: #ebd9a8;
-  --color-brass: #d8b866;
-  --color-brass-600: #b8933c;
-  --color-brass-700: #8f7029;
+  /* Tan — a muted, desaturated gold rather than a bright brass. The earlier
+     #d8b866 was saturated enough to read as costume jewellery; pulling the
+     chroma down is what makes it look expensive. Reserved for the wordmark,
+     prices, script eyebrows and hairlines. */
+  --color-tan-300: #e0cdab;
+  --color-tan: #c9ab81;
+  --color-tan-600: #a8875c;
+  --color-tan-700: #7f6642;
 
   /* Feedback */
   --color-ember: #d9944f;
   --color-danger: #d4706a;
 
-  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: var(--font-jost), "Jost", ui-sans-serif, system-ui, sans-serif;
+  /* Display is a CONDENSED SANS now, not a serif. Set light (200) in wide
+     uppercase tracking, it is what gives the page its restraint — a heavy
+     weight at this size reads as a sports headline. */
+  --font-display: var(--font-oswald), "Oswald", "Arial Narrow", sans-serif;
+  --font-sans: var(--font-josefin), "Josefin Sans", ui-sans-serif, system-ui, sans-serif;
+  /* Formal calligraphy, used only for eyebrows and prices. Tangerine is very
+     small on the body-size scale, so it always needs a large font-size. */
+  --font-script: var(--font-tangerine), "Tangerine", "Apple Chancery", cursive;
 
   --radius-xl2: 1.75rem;
 
@@ -53,8 +64,8 @@
     0 24px 60px -20px rgb(0 0 0 / 0.8);
   --shadow-sage: 0 0 0 1px rgb(156 191 143 / 0.3),
     0 18px 50px -22px rgb(156 191 143 / 0.34);
-  --shadow-brass: 0 0 0 1px rgb(216 184 102 / 0.24),
-    0 18px 50px -22px rgb(216 184 102 / 0.3);
+  --shadow-tan: 0 0 0 1px rgb(201 171 129 / 0.26),
+    0 18px 50px -22px rgb(201 171 129 / 0.3);
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -80,7 +91,7 @@
   }
 
   /* A faint canopy of light so the page is not a flat green rectangle:
-     sage from above, a whisper of brass low down. */
+     sage from above, a whisper of tan low down. */
   body::before {
     content: "";
     position: fixed;
@@ -89,7 +100,7 @@
     z-index: 0;
     background:
       radial-gradient(120% 80% at 50% -10%, rgb(156 191 143 / 0.09), transparent 60%),
-      radial-gradient(80% 60% at 85% 100%, rgb(216 184 102 / 0.045), transparent 70%);
+      radial-gradient(80% 60% at 85% 100%, rgb(201 171 129 / 0.05), transparent 70%);
   }
 
   ::selection {
@@ -108,10 +119,21 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* Feather-light, uppercase, widely tracked. The tracking is positive and
+     large here, the opposite of the tight negative tracking a serif display
+     wants — condensed caps need air between them to stay legible. */
   h1, h2, h3 {
     font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.015em;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.08;
+  }
+
+  h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.06em;
   }
 
   input, textarea, select, button {
@@ -135,6 +157,36 @@
     text-transform: uppercase;
     color: var(--color-sand);
     font-weight: 500;
+  }
+
+  /* The decorative counterpart: formal calligraphy in tan, sitting above a
+     hard uppercase headline. The contrast between the two is the whole
+     effect, so they are always used as a pair.
+     Tangerine's x-height is tiny — below ~1.75rem it is unreadable. */
+  .eyebrow-script {
+    font-family: var(--font-script);
+    font-weight: 700;
+    font-size: 2.125rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--color-tan);
+  }
+
+  /* Oversized wordmark ghosted behind the hero: transparent fill with a
+     hairline stroke. `paint-order` keeps the stroke from eating the glyph,
+     and the huge tracking is what stops it reading as a headline. */
+  .outline-word {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(224 205 171 / 0.13);
+    paint-order: stroke fill;
+    letter-spacing: 0.34em;
+    line-height: 0.9;
+    user-select: none;
+    white-space: nowrap;
   }
 
   .rule {
@@ -169,25 +221,35 @@
   }
 
   /* Reserved for genuinely precious moments — not general chrome. */
-  .glass-brass {
+  .glass-tan {
     background: linear-gradient(
       165deg,
-      rgb(216 184 102 / 0.11),
-      rgb(216 184 102 / 0.025)
+      rgb(201 171 129 / 0.12),
+      rgb(201 171 129 / 0.03)
     );
-    border: 1px solid rgb(216 184 102 / 0.22);
+    border: 1px solid rgb(201 171 129 / 0.24);
     backdrop-filter: blur(14px);
   }
 
-  /* Brass foil text, used once per page at most. */
+  /* Prices, in calligraphy. Unusual, and the single cheapest way to make a
+     menu feel like a restaurant's rather than a spreadsheet's. */
+  .price-script {
+    font-family: var(--font-script);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-tan);
+    font-variant-numeric: normal;
+  }
+
+  /* Tan foil text, used once per page at most. */
   .foil {
     background: linear-gradient(
       100deg,
-      #8f7029 0%,
-      #f0dca4 28%,
-      #fff8e2 42%,
-      #d8b866 58%,
-      #8f7029 100%
+      #7f6642 0%,
+      #e0cdab 28%,
+      #fdf6e8 42%,
+      #c9ab81 58%,
+      #7f6642 100%
     );
     background-size: 200% 100%;
     -webkit-background-clip: text;

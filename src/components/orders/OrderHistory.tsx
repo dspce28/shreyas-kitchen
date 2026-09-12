@@ -116,7 +116,7 @@ function OrderCard({ order }: { order: Order }) {
       </div>
 
       <div className="shrink-0 text-right">
-        <p className="tnum font-display text-xl text-brass-300">{rupees(order.total_paise)}</p>
+        <p className="price-script text-[1.75rem]">{rupees(order.total_paise)}</p>
         <p className="mt-0.5 text-[0.6875rem] uppercase tracking-wider text-stone">
           {order.payment_method === "cod" ? "Cash" : order.payment_status}
         </p>
@@ -124,7 +124,7 @@ function OrderCard({ order }: { order: Order }) {
 
       <ChevronRight
         size={18}
-        className="shrink-0 text-stone transition-transform duration-300 group-hover:translate-x-1 group-hover:text-brass"
+        className="shrink-0 text-stone transition-transform duration-300 group-hover:translate-x-1 group-hover:text-tan"
         aria-hidden
       />
     </Link>

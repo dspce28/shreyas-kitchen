@@ -295,7 +295,7 @@ export function OrderTracker({ orderNo }: { orderNo: string }) {
                     : `Online · ${order.payment_status}`}
               </span>
             </dt>
-            <dd className="tnum font-display text-2xl text-brass-300">
+            <dd className="price-script text-[2rem]">
               {rupees(order.total_paise)}
             </dd>
           </div>
@@ -313,7 +313,7 @@ export function OrderTracker({ orderNo }: { orderNo: string }) {
         <div className="glass rounded-[1.5rem] p-5">
           <p className="eyebrow mb-2.5">Delivering to</p>
           <p className="flex gap-2.5 text-sm leading-relaxed text-sand">
-            <MapPin size={15} className="mt-0.5 shrink-0 text-brass" aria-hidden />
+            <MapPin size={15} className="mt-0.5 shrink-0 text-tan" aria-hidden />
             <span>
               {order.ship_name && (
                 <>
@@ -334,7 +334,7 @@ export function OrderTracker({ orderNo }: { orderNo: string }) {
             href={`tel:${STORE.phone}`}
             className="inline-flex items-center gap-2.5 text-sm text-cream transition hover:text-sage-300"
           >
-            <Phone size={15} className="text-brass" aria-hidden />
+            <Phone size={15} className="text-tan" aria-hidden />
             <span className="tnum">{STORE.phoneDisplay}</span>
           </a>
           <p className="mt-2 text-xs leading-relaxed text-stone">

@@ -135,11 +135,11 @@ function ComboCard({
 
       <div className="relative flex items-start justify-between gap-4">
         <div>
-          <p className="eyebrow text-[0.5625rem] text-brass/70">{combo.code}</p>
+          <p className="eyebrow text-[0.5625rem] text-tan/70">{combo.code}</p>
           <h2 className="mt-2 text-2xl leading-tight text-cream">{combo.name}</h2>
         </div>
         <div className="text-right">
-          <p className="tnum font-display text-2xl text-brass-300">{rupees(combo.price_paise)}</p>
+          <p className="price-script text-[2rem]">{rupees(combo.price_paise)}</p>
           {saving > 0 && (
             <p className="tnum mt-0.5 text-[0.6875rem] text-sage-300">save {rupees(saving)}</p>
           )}
