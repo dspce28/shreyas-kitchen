@@ -86,6 +86,14 @@ Login is a mobile number plus a 6-digit code. No passwords, no email.
 `OTP_PROVIDER=dev` (the default) skips delivery and shows the code on screen.
 The entire flow — sign in, save an address, order, track — is testable today.
 
+> **Dev mode is refused in production builds.** It hands the code back in the
+> API response, so on a public URL anyone could request a code for any number
+> — including one in `ADMIN_PHONES` — and read it straight back. That is a
+> full account takeover, so the app fails closed instead.
+>
+> To allow it anyway on a deployment you don't mind strangers signing into,
+> set `ALLOW_DEV_OTP=true`. Remove it the moment WhatsApp goes live.
+
 ### Going live on WhatsApp
 
 Meta requires business verification and a pre-approved template, so start
