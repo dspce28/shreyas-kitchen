@@ -44,7 +44,8 @@ const ICONS = { success: CheckCircle2, error: AlertCircle, info: Info };
 const TONES: Record<Tone, string> = {
   success: "text-sage-300",
   error: "text-danger",
-  info: "text-brass-300",
+  // Neutral, so it cannot be mistaken for the success tone at a glance.
+  info: "text-cream-dim",
 };
 
 export function Toaster() {

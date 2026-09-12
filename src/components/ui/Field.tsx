@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const base =
   "w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-cream " +
   "placeholder:text-stone/60 transition " +
-  "hover:border-white/20 focus:border-brass/60 focus:bg-white/[0.06] focus:outline-none " +
+  "hover:border-white/20 focus:border-sage/60 focus:bg-white/[0.06] focus:outline-none " +
   "disabled:opacity-50";
 
 interface FieldProps extends React.InputHTMLAttributes<HTMLInputElement> {

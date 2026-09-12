@@ -50,8 +50,8 @@ export default function HomePage() {
           {PILLARS.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.08}>
               <article className="glass h-full rounded-[1.75rem] p-7 transition-colors duration-500 hover:border-brass/25">
-                <div className="grid h-11 w-11 place-items-center rounded-xl border border-brass/25 bg-brass/10">
-                  <p.icon size={19} className="text-brass-300" aria-hidden />
+                <div className="grid h-11 w-11 place-items-center rounded-xl border border-sage/25 bg-sage/10">
+                  <p.icon size={19} className="text-sage-300" aria-hidden />
                 </div>
                 <h3 className="mt-5 text-xl text-cream">{p.title}</h3>
                 <p className="mt-2.5 text-sm leading-relaxed text-sand">{p.body}</p>
@@ -76,7 +76,7 @@ export default function HomePage() {
               </div>
               <Link
                 href="/menu"
-                className="group inline-flex items-center gap-2 text-sm text-brass-300 transition hover:text-brass"
+                className="group inline-flex items-center gap-2 text-sm text-sage-300 transition hover:text-sage"
               >
                 See all {CATEGORIES.reduce((n, c) => n + c.items.length, 0)} dishes
                 <ArrowRight
@@ -93,10 +93,10 @@ export default function HomePage() {
               <Reveal key={f.slug} delay={i * 0.07}>
                 <Link
                   href={`/menu#${f.slug}`}
-                  className="group relative block h-full overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-gradient-to-b from-white/[0.055] to-transparent p-6 transition-all duration-500 hover:border-brass/30 hover:shadow-[var(--shadow-brass)]"
+                  className="group relative block h-full overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-gradient-to-b from-white/[0.055] to-transparent p-6 transition-all duration-500 hover:border-sage/35 hover:shadow-[var(--shadow-sage)]"
                 >
                   {/* Brass wash that lifts on hover. */}
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_0%,rgba(216,184,102,0.14),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_0%,rgba(156,191,143,0.15),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative">
                     <p className="eyebrow text-[0.5625rem] text-brass/70">{f.category}</p>
                     <h3 className="mt-3 text-2xl leading-tight text-cream">{f.name}</h3>
@@ -114,7 +114,7 @@ export default function HomePage() {
       {/* ── Combos ──────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <Reveal>
-          <div className="glass-brass relative overflow-hidden rounded-[2rem] px-7 py-12 sm:px-14 sm:py-16">
+          <div className="glass-sage relative overflow-hidden rounded-[2rem] px-7 py-12 sm:px-14 sm:py-16">
             <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brass/10 blur-3xl" />
             <div className="relative max-w-2xl">
               <p className="eyebrow text-brass/80">{COMBOS.length} pairings</p>
@@ -127,7 +127,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/combos"
-                className="group mt-7 inline-flex items-center gap-2 rounded-2xl bg-gradient-to-b from-brass-300 to-brass-600 px-6 py-3 text-sm font-medium text-ink shadow-[0_1px_0_0_rgba(255,255,255,0.45)_inset,0_12px_28px_-12px_rgba(216,184,102,0.75)] transition-all hover:brightness-105"
+                className="group mt-7 inline-flex items-center gap-2 rounded-2xl bg-gradient-to-b from-sage-300 to-sage-600 px-6 py-3 text-sm font-medium text-ink-900 shadow-[0_1px_0_0_rgba(255,255,255,0.5)_inset,0_12px_28px_-12px_rgba(156,191,143,0.7)] transition-all hover:brightness-105"
               >
                 Explore combos
                 <ArrowRight

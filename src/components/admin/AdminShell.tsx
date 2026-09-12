@@ -33,8 +33,8 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   if (!isAdmin) {
     return (
       <div className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center gap-5 px-6 text-center">
-        <div className="grid h-16 w-16 place-items-center rounded-full border border-brass/25 bg-brass/10">
-          <ChefHat size={26} className="text-brass-300" aria-hidden />
+        <div className="grid h-16 w-16 place-items-center rounded-full border border-sage/25 bg-sage/10">
+          <ChefHat size={26} className="text-sage-300" aria-hidden />
         </div>
         <div>
           <h1 className="font-display text-3xl text-cream">Kitchen console</h1>
@@ -66,8 +66,8 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-ink/85 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6">
           <Link href="/admin" className="flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-xl border border-brass/25 bg-brass/10">
-              <ChefHat size={17} className="text-brass-300" aria-hidden />
+            <span className="grid h-9 w-9 place-items-center rounded-xl border border-sage/25 bg-sage/10">
+              <ChefHat size={17} className="text-sage-300" aria-hidden />
             </span>
             <span className="hidden flex-col leading-none sm:flex">
               <span className="font-display text-lg text-cream">{STORE.name}</span>
@@ -85,7 +85,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                   className={cn(
                     "inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm transition",
                     active
-                      ? "bg-brass/15 text-brass-300"
+                      ? "bg-sage/15 text-sage-300"
                       : "text-sand hover:bg-white/5 hover:text-cream",
                   )}
                 >

@@ -175,11 +175,11 @@ export function LoginSheet() {
               }}
             >
               {devCode && (
-                <div className="glass-brass rounded-xl px-4 py-3 text-sm">
-                  <p className="eyebrow mb-1 text-brass-300">Development mode</p>
+                <div className="glass-sage rounded-xl px-4 py-3 text-sm">
+                  <p className="eyebrow mb-1 text-sage-300">Development mode</p>
                   <p className="text-cream-dim">
                     WhatsApp delivery is off, so here is your code:{" "}
-                    <strong className="tnum tracking-[0.3em] text-brass-300">{devCode}</strong>
+                    <strong className="tnum tracking-[0.3em] text-sage-300">{devCode}</strong>
                   </p>
                 </div>
               )}
@@ -221,7 +221,7 @@ export function LoginSheet() {
                   type="button"
                   disabled={cooldown > 0 || busy}
                   onClick={() => void sendCode(true)}
-                  className="text-brass-300 underline-offset-4 transition hover:underline disabled:opacity-40 disabled:no-underline"
+                  className="text-sage-300 underline-offset-4 transition hover:underline disabled:opacity-40 disabled:no-underline"
                 >
                   {cooldown > 0 ? `Resend in ${cooldown}s` : "Resend code"}
                 </button>

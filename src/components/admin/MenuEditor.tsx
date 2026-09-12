@@ -257,10 +257,10 @@ export function MenuEditor() {
 
       {/* Save bar — only appears when there is something to save. */}
       {changes.length > 0 && (
-        <div className="fixed inset-x-0 bottom-0 z-50 border-t border-brass/25 bg-ink-800/95 px-4 py-3.5 backdrop-blur-xl sm:px-6">
+        <div className="fixed inset-x-0 bottom-0 z-50 border-t border-sage/30 bg-ink-800/95 px-4 py-3.5 backdrop-blur-xl sm:px-6">
           <div className="mx-auto flex max-w-4xl items-center justify-between gap-4">
             <p className="text-sm text-cream-dim">
-              <span className="tnum font-medium text-brass-300">{changes.length}</span> unsaved
+              <span className="tnum font-medium text-sage-300">{changes.length}</span> unsaved
               change{changes.length === 1 ? "" : "s"}
             </p>
             <div className="flex gap-2">
@@ -300,7 +300,7 @@ function EditorRow({
     <li
       className={cn(
         "flex items-center gap-4 border-b border-white/[0.06] py-3 transition-colors last:border-0",
-        dirty && "bg-brass/[0.05]",
+        dirty && "bg-sage/[0.05]",
       )}
     >
       <div className="min-w-0 flex-1">
@@ -319,7 +319,7 @@ function EditorRow({
           value={draft.price}
           onChange={(e) => onPrice(e.target.value.replace(/[^\d.]/g, ""))}
           aria-label={`Price for ${name}`}
-          className="tnum h-10 w-full rounded-xl border border-white/10 bg-white/[0.04] pl-7 pr-3 text-right text-cream transition focus:border-brass/60 focus:outline-none"
+          className="tnum h-10 w-full rounded-xl border border-white/10 bg-white/[0.04] pl-7 pr-3 text-right text-cream transition focus:border-sage/60 focus:outline-none"
         />
       </div>
 

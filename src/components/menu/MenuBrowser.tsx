@@ -66,7 +66,7 @@ export function MenuBrowser() {
     <div className="pb-20">
       {/* ── Header ─────────────────────────────────────────────── */}
       <header className="relative overflow-hidden border-b border-white/[0.07] px-4 pb-10 pt-14 sm:px-6 sm:pb-14 sm:pt-20">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(216,184,102,0.09),transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(156,191,143,0.10),transparent_70%)]" />
         <div className="relative mx-auto max-w-4xl text-center">
           <p className="eyebrow">The menu</p>
           <h1 className="mt-4 text-5xl sm:text-7xl">
@@ -91,7 +91,7 @@ export function MenuBrowser() {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search dishes, ingredients…"
               aria-label="Search the menu"
-              className="h-12 w-full rounded-2xl border border-white/10 bg-white/[0.04] pl-11 pr-10 text-sm text-cream placeholder:text-stone/70 transition focus:border-brass/50 focus:bg-white/[0.06] focus:outline-none"
+              className="h-12 w-full rounded-2xl border border-white/10 bg-white/[0.04] pl-11 pr-10 text-sm text-cream placeholder:text-stone/70 transition focus:border-sage/50 focus:bg-white/[0.06] focus:outline-none"
             />
             {query && (
               <button
@@ -120,7 +120,7 @@ export function MenuBrowser() {
                 className={cn(
                   "shrink-0 whitespace-nowrap rounded-xl px-3.5 py-2 text-[0.8125rem] transition-colors",
                   active === c.slug
-                    ? "bg-brass/15 text-brass-300"
+                    ? "bg-sage/15 text-sage-300"
                     : "text-sand hover:bg-white/5 hover:text-cream",
                 )}
               >

@@ -26,7 +26,7 @@ export function Hero() {
 
       {/* Keeps the type legible over the brightest part of the render:
           a soft wash behind the copy column, not the whole frame. */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(85%_70%_at_28%_50%,rgba(10,9,6,0.88),transparent_70%)] sm:bg-[radial-gradient(55%_70%_at_22%_50%,rgba(10,9,6,0.9),transparent_72%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(85%_70%_at_28%_50%,rgba(18,26,22,0.88),transparent_70%)] sm:bg-[radial-gradient(55%_70%_at_22%_50%,rgba(18,26,22,0.9),transparent_72%)]" />
 
       <div className="mx-auto w-full max-w-6xl text-center sm:text-left">
         <motion.p {...rise(0.1)} className="eyebrow">
@@ -55,7 +55,7 @@ export function Hero() {
         >
           <Link
             href="/menu"
-            className="group inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-brass-300 to-brass-600 px-8 text-[0.9375rem] font-medium text-ink shadow-[0_1px_0_0_rgba(255,255,255,0.45)_inset,0_16px_40px_-14px_rgba(216,184,102,0.8)] transition-all duration-300 hover:brightness-105 active:translate-y-px sm:w-auto"
+            className="group inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-b from-sage-300 to-sage-600 px-8 text-[0.9375rem] font-medium text-ink-900 shadow-[0_1px_0_0_rgba(255,255,255,0.5)_inset,0_16px_40px_-14px_rgba(156,191,143,0.75)] transition-all duration-300 hover:brightness-105 active:translate-y-px sm:w-auto"
           >
             Order now
             <ArrowRight
@@ -66,7 +66,7 @@ export function Hero() {
           </Link>
           <Link
             href="/combos"
-            className="glass inline-flex h-13 w-full items-center justify-center rounded-2xl px-8 text-[0.9375rem] text-cream transition-all duration-300 hover:border-brass/40 sm:w-auto"
+            className="glass inline-flex h-13 w-full items-center justify-center rounded-2xl px-8 text-[0.9375rem] text-cream transition-all duration-300 hover:border-sage/45 sm:w-auto"
           >
             See the combos
           </Link>
@@ -76,7 +76,7 @@ export function Hero() {
           {...rise(0.58)}
           className="mt-9 inline-flex items-center gap-2 text-xs text-stone"
         >
-          <MapPin size={13} className="text-brass/70" aria-hidden />
+          <MapPin size={13} className="text-sage/70" aria-hidden />
           {STORE.location}
         </motion.p>
       </div>

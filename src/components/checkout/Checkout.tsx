@@ -174,7 +174,7 @@ export function Checkout() {
               <h2 className="text-xl text-cream">Deliver to</h2>
               <button
                 onClick={() => setAddressSheet(true)}
-                className="inline-flex items-center gap-1.5 text-sm text-brass-300 transition hover:text-brass"
+                className="inline-flex items-center gap-1.5 text-sm text-sage-300 transition hover:text-sage"
               >
                 <Plus size={14} aria-hidden />
                 New address
@@ -188,7 +188,7 @@ export function Checkout() {
             ) : addresses.length === 0 ? (
               <button
                 onClick={() => setAddressSheet(true)}
-                className="mt-4 flex w-full items-center gap-3 rounded-2xl border border-dashed border-white/15 px-4 py-6 text-left transition hover:border-brass/40"
+                className="mt-4 flex w-full items-center gap-3 rounded-2xl border border-dashed border-white/15 px-4 py-6 text-left transition hover:border-sage/45"
               >
                 <MapPin size={18} className="text-brass" aria-hidden />
                 <span className="text-sm text-sand">
@@ -203,7 +203,7 @@ export function Checkout() {
                       className={cn(
                         "flex cursor-pointer items-start gap-3 rounded-2xl border px-4 py-3.5 transition",
                         addressId === a.id
-                          ? "border-brass/45 bg-brass/[0.08]"
+                          ? "border-sage/45 bg-sage/[0.08]"
                           : "border-white/10 bg-white/[0.03] hover:border-white/25",
                       )}
                     >
@@ -399,12 +399,12 @@ function PaymentOption({
       className={cn(
         "flex items-start gap-3 rounded-2xl border px-4 py-3.5 text-left transition",
         selected
-          ? "border-brass/45 bg-brass/[0.08]"
+          ? "border-sage/45 bg-sage/[0.08]"
           : "border-white/10 bg-white/[0.03] hover:border-white/25",
         disabled && "cursor-not-allowed opacity-45 hover:border-white/10",
       )}
     >
-      <Icon size={18} className={selected ? "text-brass-300" : "text-sand"} />
+      <Icon size={18} className={selected ? "text-sage-300" : "text-sand"} />
       <span>
         <span className="block text-sm text-cream">{title}</span>
         <span className="mt-0.5 block text-xs text-stone">{body}</span>

@@ -19,6 +19,7 @@ const COUNT = 34;
 const vertex = /* glsl */ `
   uniform float uTime;
   uniform float uSpeed;
+  uniform float uRise;
   attribute float aSeed;
   attribute float aScale;
   varying float vAlpha;
@@ -31,7 +32,7 @@ const vertex = /* glsl */ `
     vUv = uv;
 
     float life = fract(uTime * uSpeed * (0.55 + hash(aSeed) * 0.5) + aSeed);
-    float rise = life * 2.6;
+    float rise = life * uRise;
 
     // Curl: two offset sines so the column wanders rather than snaking.
     float drift = sin(uTime * 0.6 + aSeed * 9.0 + rise * 2.2) * 0.16 * life
@@ -74,7 +75,17 @@ const fragment = /* glsl */ `
   }
 `;
 
-export function Steam({ reduced }: { reduced: boolean }) {
+export function Steam({
+  reduced,
+  opacity = 0.2,
+  rise = 2.6,
+}: {
+  reduced: boolean;
+  /** Peak alpha per quad. Small numbers only — steam is nearly invisible. */
+  opacity?: number;
+  /** How far a wisp climbs before it loops, in local units. */
+  rise?: number;
+}) {
   const mat = useRef<THREE.ShaderMaterial>(null);
 
   const geometry = useMemo(() => {
@@ -102,10 +113,11 @@ export function Steam({ reduced }: { reduced: boolean }) {
     () => ({
       uTime: { value: 0 },
       uSpeed: { value: 0.16 },
+      uRise: { value: rise },
       uColor: { value: new THREE.Color("#efe6d4") },
-      uOpacity: { value: 0.2 },
+      uOpacity: { value: opacity },
     }),
-    [],
+    [opacity, rise],
   );
 
   useFrame((state, delta) => {

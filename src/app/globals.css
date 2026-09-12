@@ -10,34 +10,39 @@
    ══════════════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* Grounds — near-black, warm, never blue-grey */
-  --color-ink-900: #080705;
-  --color-ink: #0a0906;
-  --color-ink-800: #100e0a;
-  --color-ink-700: #17140f;
-  --color-ink-600: #211d16;
-  --color-ink-500: #2e281f;
+  /* Grounds — deep forest, not espresso. The first version was near-black
+     plus brass, which reads steakhouse; a green ground reads botanical and
+     keeps the "fresh, wholesome" half of the brand promise intact. */
+  --color-ink-900: #0b110e;
+  --color-ink: #121a16;
+  --color-ink-800: #18221d;
+  --color-ink-700: #1f2b25;
+  --color-ink-600: #28362e;
+  --color-ink-500: #33443a;
 
-  /* Warm neutrals */
-  --color-cream: #f6f1e6;
-  --color-cream-dim: #ded6c6;
-  --color-sand: #b8ad99;
-  --color-stone: #8a8073;
+  /* Neutrals, warmed just enough not to go cold against the green */
+  --color-cream: #f2ede1;
+  --color-cream-dim: #d9d2c4;
+  --color-sand: #aeb3a3;
+  --color-stone: #7e8478;
 
-  /* Brass — the luxury accent */
-  --color-brass-300: #f0dca4;
+  /* Sage — now the PRIMARY accent. Actions, highlights, focus. */
+  --color-sage-300: #c3d9b6;
+  --color-sage: #9cbf8f;
+  --color-sage-600: #6e9161;
+  --color-sage-700: #4f6b45;
+
+  /* Brass — demoted to a restrained secondary: the wordmark, prices,
+     hairlines. Used sparingly it still signals premium; used everywhere it
+     was the whisky-bar problem. */
+  --color-brass-300: #ebd9a8;
   --color-brass: #d8b866;
   --color-brass-600: #b8933c;
   --color-brass-700: #8f7029;
 
-  /* Sage — the "fresh & wholesome" accent */
-  --color-sage-300: #b9cdab;
-  --color-sage: #8ba87a;
-  --color-sage-600: #63834f;
-
   /* Feedback */
-  --color-ember: #d98b52;
-  --color-danger: #d96a5a;
+  --color-ember: #d9944f;
+  --color-danger: #d4706a;
 
   --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-jost), "Jost", ui-sans-serif, system-ui, sans-serif;
@@ -46,8 +51,10 @@
 
   --shadow-lift: 0 1px 0 0 rgb(255 255 255 / 0.04) inset,
     0 24px 60px -20px rgb(0 0 0 / 0.8);
-  --shadow-brass: 0 0 0 1px rgb(216 184 102 / 0.28),
-    0 18px 50px -22px rgb(216 184 102 / 0.42);
+  --shadow-sage: 0 0 0 1px rgb(156 191 143 / 0.3),
+    0 18px 50px -22px rgb(156 191 143 / 0.34);
+  --shadow-brass: 0 0 0 1px rgb(216 184 102 / 0.24),
+    0 18px 50px -22px rgb(216 184 102 / 0.3);
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -72,8 +79,8 @@
     overflow-x: clip;
   }
 
-  /* The whole page sits on a faint warm vignette so the 3D hero does not
-     look like it is floating on a flat black rectangle. */
+  /* A faint canopy of light so the page is not a flat green rectangle:
+     sage from above, a whisper of brass low down. */
   body::before {
     content: "";
     position: fixed;
@@ -81,17 +88,17 @@
     pointer-events: none;
     z-index: 0;
     background:
-      radial-gradient(120% 80% at 50% -10%, rgb(216 184 102 / 0.07), transparent 60%),
-      radial-gradient(80% 60% at 10% 100%, rgb(139 168 122 / 0.05), transparent 70%);
+      radial-gradient(120% 80% at 50% -10%, rgb(156 191 143 / 0.09), transparent 60%),
+      radial-gradient(80% 60% at 85% 100%, rgb(216 184 102 / 0.045), transparent 70%);
   }
 
   ::selection {
-    background: var(--color-brass);
+    background: var(--color-sage);
     color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-brass);
+    outline: 2px solid var(--color-sage);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -135,7 +142,7 @@
     background: linear-gradient(
       to right,
       transparent,
-      rgb(216 184 102 / 0.35),
+      rgb(156 191 143 / 0.34),
       transparent
     );
   }
@@ -150,13 +157,25 @@
     backdrop-filter: blur(14px) saturate(1.1);
   }
 
+  /* The default tinted surface. Sage, because it is the primary accent now. */
+  .glass-sage {
+    background: linear-gradient(
+      165deg,
+      rgb(156 191 143 / 0.13),
+      rgb(156 191 143 / 0.03)
+    );
+    border: 1px solid rgb(156 191 143 / 0.26);
+    backdrop-filter: blur(14px);
+  }
+
+  /* Reserved for genuinely precious moments — not general chrome. */
   .glass-brass {
     background: linear-gradient(
       165deg,
-      rgb(216 184 102 / 0.12),
-      rgb(216 184 102 / 0.03)
+      rgb(216 184 102 / 0.11),
+      rgb(216 184 102 / 0.025)
     );
-    border: 1px solid rgb(216 184 102 / 0.25);
+    border: 1px solid rgb(216 184 102 / 0.22);
     backdrop-filter: blur(14px);
   }
 

@@ -130,7 +130,7 @@ export function OrderTracker({ orderNo }: { orderNo: string }) {
         <h1 className="font-display text-2xl text-cream">{error}</h1>
         <Link
           href="/orders"
-          className="mt-5 inline-flex text-sm text-brass-300 underline-offset-4 hover:underline"
+          className="mt-5 inline-flex text-sm text-sage-300 underline-offset-4 hover:underline"
         >
           Back to your orders
         </Link>
@@ -172,7 +172,7 @@ export function OrderTracker({ orderNo }: { orderNo: string }) {
       <div
         className={cn(
           "mt-8 rounded-[1.75rem] border p-6",
-          rejected ? "border-danger/25 bg-danger/[0.07]" : "glass-brass",
+          rejected ? "border-danger/25 bg-danger/[0.07]" : "glass-sage",
         )}
       >
         <p className="font-display text-2xl text-cream">{STATUS_LABEL[order.status]}</p>
@@ -215,7 +215,7 @@ export function OrderTracker({ orderNo }: { orderNo: string }) {
                   <span
                     className={cn(
                       "absolute left-[1.1875rem] top-10 h-[calc(100%-1.5rem)] w-px",
-                      done ? "bg-brass/45" : "bg-white/10",
+                      done ? "bg-sage/45" : "bg-white/10",
                     )}
                     aria-hidden
                   />
@@ -227,8 +227,8 @@ export function OrderTracker({ orderNo }: { orderNo: string }) {
                   transition={{ duration: 2.2, repeat: active ? Infinity : 0, ease: "easeInOut" }}
                   className={cn(
                     "relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border transition-colors",
-                    done && "border-brass/45 bg-brass/20 text-brass-300",
-                    active && "border-brass bg-brass text-ink shadow-[0_0_0_6px_rgba(216,184,102,0.12)]",
+                    done && "border-sage/45 bg-sage/20 text-sage-300",
+                    active && "border-sage bg-sage text-ink-900 shadow-[0_0_0_6px_rgba(156,191,143,0.16)]",
                     !done && !active && "border-white/10 bg-white/[0.03] text-stone",
                   )}
                 >
@@ -332,7 +332,7 @@ export function OrderTracker({ orderNo }: { orderNo: string }) {
           <p className="eyebrow mb-2.5">Need to change something?</p>
           <a
             href={`tel:${STORE.phone}`}
-            className="inline-flex items-center gap-2.5 text-sm text-cream transition hover:text-brass-300"
+            className="inline-flex items-center gap-2.5 text-sm text-cream transition hover:text-sage-300"
           >
             <Phone size={15} className="text-brass" aria-hidden />
             <span className="tnum">{STORE.phoneDisplay}</span>

@@ -93,7 +93,7 @@ export function ItemRow({
                   className={cn(
                     "rounded-lg border px-2.5 py-1 text-xs transition",
                     option === o
-                      ? "border-brass/50 bg-brass/15 text-brass-300"
+                      ? "border-sage/50 bg-sage/15 text-sage-300"
                       : "border-white/10 text-sand hover:border-white/25 hover:text-cream",
                   )}
                 >
@@ -116,7 +116,7 @@ export function ItemRow({
               "grid h-9 w-9 place-items-center rounded-xl border transition-all duration-300",
               justAdded
                 ? "border-sage/50 bg-sage/20 text-sage-300"
-                : "border-white/12 bg-white/[0.04] text-sand hover:border-brass/45 hover:bg-brass/12 hover:text-brass-300",
+                : "border-white/12 bg-white/[0.04] text-sand hover:border-sage/50 hover:bg-sage/12 hover:text-sage-300",
               unavailable && "pointer-events-none",
             )}
           >

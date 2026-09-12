@@ -128,7 +128,7 @@ export function AccountPanel() {
           <h2 className="font-display text-xl text-cream">Delivery addresses</h2>
           <button
             onClick={() => setCreating(true)}
-            className="inline-flex items-center gap-1.5 text-sm text-brass-300 transition hover:text-brass"
+            className="inline-flex items-center gap-1.5 text-sm text-sage-300 transition hover:text-sage"
           >
             <Plus size={14} aria-hidden />
             Add
@@ -138,7 +138,7 @@ export function AccountPanel() {
         {addresses.length === 0 ? (
           <button
             onClick={() => setCreating(true)}
-            className="mt-4 flex w-full items-center gap-3 rounded-2xl border border-dashed border-white/15 px-4 py-7 text-left transition hover:border-brass/40"
+            className="mt-4 flex w-full items-center gap-3 rounded-2xl border border-dashed border-white/15 px-4 py-7 text-left transition hover:border-sage/45"
           >
             <MapPin size={18} className="text-brass" aria-hidden />
             <span className="text-sm text-sand">
@@ -153,7 +153,7 @@ export function AccountPanel() {
                 className={cn(
                   "rounded-2xl border px-4 py-4 transition",
                   a.is_default
-                    ? "border-brass/35 bg-brass/[0.06]"
+                    ? "border-sage/35 bg-sage/[0.06]"
                     : "border-white/[0.08] bg-white/[0.03]",
                 )}
               >
@@ -184,7 +184,7 @@ export function AccountPanel() {
                         onClick={() => void makeDefault(a)}
                         title="Make default"
                         aria-label={`Make ${a.label} the default address`}
-                        className="rounded-lg p-2 text-stone transition hover:bg-white/5 hover:text-brass-300"
+                        className="rounded-lg p-2 text-stone transition hover:bg-white/5 hover:text-sage-300"
                       >
                         <Star size={15} />
                       </button>

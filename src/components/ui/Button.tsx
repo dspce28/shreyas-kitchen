@@ -14,14 +14,16 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const VARIANTS: Record<Variant, string> = {
-  // Brass fill with a lit top edge — the one control that should feel precious.
+  // Light sage fill with a lit top edge. A pale button on a dark green ground
+  // gives the strongest contrast in the palette, and reads fresh rather than
+  // gilded — brass is kept for the wordmark and prices instead.
   primary:
-    "bg-gradient-to-b from-brass-300 to-brass-600 text-ink font-medium " +
-    "shadow-[0_1px_0_0_rgba(255,255,255,0.45)_inset,0_12px_28px_-12px_rgba(216,184,102,0.75)] " +
-    "hover:from-brass-300 hover:to-brass hover:shadow-[0_1px_0_0_rgba(255,255,255,0.55)_inset,0_16px_36px_-12px_rgba(216,184,102,0.9)] " +
+    "bg-gradient-to-b from-sage-300 to-sage-600 text-ink-900 font-medium " +
+    "shadow-[0_1px_0_0_rgba(255,255,255,0.5)_inset,0_12px_28px_-12px_rgba(156,191,143,0.7)] " +
+    "hover:from-sage-300 hover:to-sage hover:shadow-[0_1px_0_0_rgba(255,255,255,0.6)_inset,0_16px_36px_-12px_rgba(156,191,143,0.85)] " +
     "active:translate-y-px",
   secondary:
-    "glass text-cream hover:border-brass/40 hover:bg-white/[0.07] active:translate-y-px",
+    "glass text-cream hover:border-sage/45 hover:bg-white/[0.07] active:translate-y-px",
   ghost: "text-sand hover:text-cream hover:bg-white/5",
   danger:
     "bg-danger/15 text-danger border border-danger/35 hover:bg-danger/25 active:translate-y-px",

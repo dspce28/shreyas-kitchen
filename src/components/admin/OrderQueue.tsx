@@ -97,7 +97,7 @@ export function OrderQueue() {
           <h1 className="mt-2 text-4xl">
             {pendingCount > 0 ? (
               <>
-                <span className="tnum text-brass-300">{pendingCount}</span> awaiting you
+                <span className="tnum text-sage-300">{pendingCount}</span> awaiting you
               </>
             ) : (
               "All caught up"
@@ -113,7 +113,7 @@ export function OrderQueue() {
                 onClick={() => setScope(s)}
                 className={cn(
                   "rounded-lg px-3 py-1.5 text-xs capitalize transition",
-                  scope === s ? "bg-brass/20 text-brass-300" : "text-sand hover:text-cream",
+                  scope === s ? "bg-sage/20 text-sage-300" : "text-sand hover:text-cream",
                 )}
               >
                 {s === "live" ? "In progress" : "Everything"}
@@ -202,7 +202,7 @@ export function OrderQueue() {
                 <ul className="mt-4 space-y-1.5 border-y border-white/[0.07] py-3.5 text-sm">
                   {order.order_items?.map((l) => (
                     <li key={l.id} className="flex gap-2.5">
-                      <span className="tnum shrink-0 font-medium text-brass-300">{l.qty}×</span>
+                      <span className="tnum shrink-0 font-medium text-sage-300">{l.qty}×</span>
                       <span className="min-w-0 flex-1">
                         <span className="text-cream">{l.name_snapshot}</span>
                         {l.detail && (
@@ -214,8 +214,8 @@ export function OrderQueue() {
                 </ul>
 
                 {order.customer_note && (
-                  <p className="mt-3 flex gap-2 rounded-xl border border-brass/20 bg-brass/[0.07] px-3 py-2 text-xs leading-relaxed text-cream-dim">
-                    <StickyNote size={13} className="mt-0.5 shrink-0 text-brass-300" aria-hidden />
+                  <p className="mt-3 flex gap-2 rounded-xl border border-sage/20 bg-sage/[0.07] px-3 py-2 text-xs leading-relaxed text-cream-dim">
+                    <StickyNote size={13} className="mt-0.5 shrink-0 text-sage-300" aria-hidden />
                     {order.customer_note}
                   </p>
                 )}
@@ -228,7 +228,7 @@ export function OrderQueue() {
                   </span>
                   <a
                     href={`tel:${order.ship_phone}`}
-                    className="inline-flex items-center gap-1.5 transition hover:text-brass-300"
+                    className="inline-flex items-center gap-1.5 transition hover:text-sage-300"
                   >
                     <Phone size={12} aria-hidden />
                     Call
@@ -308,7 +308,7 @@ export function OrderQueue() {
               <button
                 key={r}
                 onClick={() => setReason(r)}
-                className="rounded-lg border border-white/10 px-2.5 py-1 text-xs text-sand transition hover:border-brass/40 hover:text-brass-300"
+                className="rounded-lg border border-white/10 px-2.5 py-1 text-xs text-sand transition hover:border-sage/45 hover:text-sage-300"
               >
                 {r}
               </button>

@@ -77,7 +77,7 @@ export async function openCheckout(args: CheckoutArgs): Promise<CheckoutResult> 
       currency: args.currency,
       name: "Shreya's Kitchen",
       description: `Order ${args.orderNo}`,
-      theme: { color: "#d8b866", backdrop_color: "#0a0906" },
+      theme: { color: "#6e9161", backdrop_color: "#121a16" },
       prefill: {
         name: args.customerName ?? undefined,
         contact: args.customerPhone,

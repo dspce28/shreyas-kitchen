@@ -26,7 +26,7 @@ export function CombosBrowser() {
   return (
     <div className="pb-20">
       <header className="relative overflow-hidden border-b border-white/[0.07] px-4 pb-10 pt-14 sm:px-6 sm:pb-14 sm:pt-20">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(216,184,102,0.1),transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(156,191,143,0.11),transparent_70%)]" />
         <div className="relative mx-auto max-w-3xl text-center">
           <p className="eyebrow">Combos</p>
           <h1 className="mt-4 text-5xl sm:text-7xl">
@@ -128,10 +128,10 @@ function ComboCard({
     <article
       className={cn(
         "group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-gradient-to-b from-white/[0.055] to-transparent p-6 transition-all duration-500",
-        unavailable ? "opacity-55" : "hover:border-brass/30 hover:shadow-[var(--shadow-brass)]",
+        unavailable ? "opacity-55" : "hover:border-sage/35 hover:shadow-[var(--shadow-sage)]",
       )}
     >
-      <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brass/[0.07] opacity-60 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-sage/[0.07] opacity-60 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
 
       <div className="relative flex items-start justify-between gap-4">
         <div>
@@ -152,7 +152,7 @@ function ComboCard({
             const item = itemBySlug.get(slot.item!);
             return (
               <div key={i} className="flex items-baseline gap-2.5">
-                <span className="text-brass/50" aria-hidden>
+                <span className="text-sage/50" aria-hidden>
                   ◆
                 </span>
                 <div>
@@ -169,7 +169,7 @@ function ComboCard({
           return (
             <div key={i}>
               <div className="flex items-baseline gap-2.5">
-                <span className="text-brass/50" aria-hidden>
+                <span className="text-sage/50" aria-hidden>
                   ◆
                 </span>
                 <p className="text-[0.8125rem] text-sand">{slot.label}</p>
@@ -185,7 +185,7 @@ function ComboCard({
                       className={cn(
                         "rounded-lg border px-2.5 py-1 text-xs transition disabled:opacity-40",
                         selected
-                          ? "border-brass/50 bg-brass/15 text-brass-300"
+                          ? "border-sage/50 bg-sage/15 text-sage-300"
                           : "border-white/10 text-sand hover:border-white/25 hover:text-cream",
                       )}
                     >
@@ -219,7 +219,7 @@ function ComboCard({
             "inline-flex h-9 items-center gap-2 rounded-xl border px-3.5 text-[0.8125rem] transition-all duration-300",
             justAdded
               ? "border-sage/50 bg-sage/20 text-sage-300"
-              : "border-white/12 bg-white/[0.04] text-cream hover:border-brass/45 hover:bg-brass/12 hover:text-brass-300",
+              : "border-white/12 bg-white/[0.04] text-cream hover:border-sage/50 hover:bg-sage/12 hover:text-sage-300",
             unavailable && "pointer-events-none",
           )}
         >

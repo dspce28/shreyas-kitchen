@@ -49,7 +49,7 @@ export function OrderHistory() {
         action={
           <Link
             href="/menu"
-            className="inline-flex h-11 items-center rounded-2xl bg-gradient-to-b from-brass-300 to-brass-600 px-5 text-sm font-medium text-ink transition hover:brightness-105"
+            className="inline-flex h-11 items-center rounded-2xl bg-gradient-to-b from-sage-300 to-sage-600 px-5 text-sm font-medium text-ink transition hover:brightness-105"
           >
             Browse the menu
           </Link>
@@ -68,7 +68,7 @@ export function OrderHistory() {
 
       {live.length > 0 && (
         <section className="mt-10">
-          <h2 className="eyebrow mb-4 text-brass/80">In progress</h2>
+          <h2 className="eyebrow mb-4 text-sage/80">In progress</h2>
           <div className="space-y-3">
             {live.map((o) => (
               <OrderCard key={o.id} order={o} />
@@ -101,7 +101,7 @@ function OrderCard({ order }: { order: Order }) {
   return (
     <Link
       href={`/orders/${order.order_no}`}
-      className="group flex items-center gap-4 rounded-[1.5rem] border border-white/[0.08] bg-white/[0.03] p-5 transition-all duration-300 hover:border-brass/30 hover:bg-white/[0.05]"
+      className="group flex items-center gap-4 rounded-[1.5rem] border border-white/[0.08] bg-white/[0.03] p-5 transition-all duration-300 hover:border-sage/35 hover:bg-white/[0.05]"
     >
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2.5">

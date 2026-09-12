@@ -4,7 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { ContactShadows, Environment, Lightformer, PerformanceMonitor } from "@react-three/drei";
 import * as THREE from "three";
-import { CoffeeCup } from "./CoffeeCup";
+import { Thali, DAL_POSITION, THALI_TILT } from "./Thali";
 import { Steam } from "./Steam";
 import { Motes } from "./Motes";
 
@@ -92,17 +92,16 @@ function Composition({ children }: { children: React.ReactNode }) {
   const { viewport, size } = useThree();
   const wide = size.width >= 768;
 
-  // The cup model spans roughly y −0.55 … +0.45 in local units, so these
-  // numbers are chosen to land it in the empty band below the copy: the
-  // lower-right corner on desktop, the bottom strip on a phone. Getting this
-  // wrong pushes the saucer off-frame entirely, which reads as a bug.
-  const scale = wide ? Math.min(1, Math.max(0.62, viewport.width / 9)) : 0.7;
+  // The thali is wide and low (radius ~1.6) rather than tall like the cup it
+  // replaced, so it needs a smaller scale and sits closer to the frame edge.
+  // On desktop it fills the lower-right; on a phone it rises from the bottom.
+  const scale = wide ? Math.min(0.82, Math.max(0.5, viewport.width / 13)) : 0.52;
 
   return (
     <group
-      position={wide ? [1.35, -0.95, 0] : [0, -0.72, 0]}
+      position={wide ? [1.45, -0.85, 0] : [0, -0.92, 0]}
       scale={scale}
-      rotation={[0, wide ? -0.32 : -0.12, 0]}
+      rotation={[0, wide ? -0.28 : -0.1, 0]}
     >
       {children}
     </group>
@@ -127,21 +126,38 @@ function Scene({ reduced, dpr }: { reduced: boolean; dpr: number }) {
         shadow-camera-bottom={-4}
         shadow-bias={-0.0012}
       />
-      {/* Cool fill from the left so the shadow side is not dead black. */}
-      <directionalLight position={[-4, 2, -1.5]} intensity={0.5} color="#9db8c9" />
-      {/* Brass bounce from below, the colour of the rim. */}
-      <pointLight position={[0, -1.2, 1.8]} intensity={2.2} color="#d8b866" distance={7} decay={2} />
-      <ambientLight intensity={0.16} color="#2a2620" />
+      {/* Fill from the left, tinted sage so the shadow side picks up the
+          room colour rather than going dead black. */}
+      <directionalLight position={[-4, 2, -1.5]} intensity={0.55} color="#a8c49a" />
+      {/* Brass bounce from below — the colour of the plate itself. */}
+      <pointLight position={[0, -1.2, 1.8]} intensity={2} color="#d8b866" distance={7} decay={2} />
+      <ambientLight intensity={0.18} color="#1e2a22" />
 
       <Composition>
-        <CoffeeCup reduced={reduced} />
-        <Steam reduced={reduced} />
+        <Thali reduced={reduced} />
+
+        {/* Steam sits OUTSIDE the thali group so it rises in world space —
+            parented to the tilted plate it would drift off at 47°. The
+            offset places it over the dal katori, accounting for the tilt. */}
+        <group
+          position={[
+            DAL_POSITION.x,
+            DAL_POSITION.y * Math.cos(THALI_TILT) - DAL_POSITION.z * Math.sin(THALI_TILT),
+            DAL_POSITION.y * Math.sin(THALI_TILT) + DAL_POSITION.z * Math.cos(THALI_TILT),
+          ]}
+          scale={0.3}
+        >
+          {/* Deliberately faint and short. At full strength over a plate this
+              size it reads as a smoke column, not as food that is still hot. */}
+          <Steam reduced={reduced} opacity={0.075} rise={1.5} />
+        </group>
+
         <ContactShadows
-          position={[0, -0.63, 0]}
-          opacity={0.62}
-          scale={7}
-          blur={2.6}
-          far={2.2}
+          position={[0, -0.12, 0]}
+          opacity={0.66}
+          scale={8}
+          blur={2.8}
+          far={2.4}
           resolution={512}
           color="#000000"
         />
@@ -153,22 +169,33 @@ function Scene({ reduced, dpr }: { reduced: boolean; dpr: number }) {
       {/* Studio softboxes, built in-scene. No HDRI download. */}
       <Environment resolution={128} frames={1}>
         <Lightformer
-          intensity={3.2}
+          intensity={4}
           color="#fff4e0"
           position={[0, 3.5, -2]}
           scale={[8, 3, 1]}
           target={[0, 0, 0]}
         />
+        {/* Broad frontal fill. Without it the plate's inner wall has nothing
+            bright to reflect and goes to black. */}
         <Lightformer
-          intensity={1.6}
-          color="#d8b866"
+          intensity={1.5}
+          color="#f4f0e4"
+          position={[0, 1.2, 4]}
+          scale={[7, 5, 1]}
+          target={[0, 0, 0]}
+        />
+        <Lightformer
+          intensity={1.7}
+          color="#e8cf96"
           position={[3.5, 0.5, 1.5]}
           scale={[3, 4, 1]}
           target={[0, 0, 0]}
         />
+        {/* Sage softbox — this is what the brass picks up along its edges,
+            and what ties the plate to the botanical palette. */}
         <Lightformer
-          intensity={1.1}
-          color="#8ba87a"
+          intensity={1.35}
+          color="#9cbf8f"
           position={[-3.5, 0, 1]}
           scale={[3, 4, 1]}
           target={[0, 0, 0]}

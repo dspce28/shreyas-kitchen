@@ -51,7 +51,7 @@ export function SiteHeader() {
       >
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-2 px-4 sm:h-[4.5rem] sm:px-6">
           <Link href="/" className="group mr-auto flex flex-col leading-none">
-            <span className="font-display text-[1.35rem] tracking-tight text-cream transition-colors group-hover:text-brass-300 sm:text-2xl">
+            <span className="font-display text-[1.35rem] tracking-tight text-cream transition-colors group-hover:text-sage-300 sm:text-2xl">
               {STORE.name}
             </span>
             <span className="eyebrow mt-0.5 hidden text-[0.5625rem] sm:block">
@@ -75,7 +75,7 @@ export function SiteHeader() {
                   {active && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute inset-x-3.5 -bottom-0.5 h-px bg-brass"
+                      className="absolute inset-x-3.5 -bottom-0.5 h-px bg-sage"
                       transition={{ type: "spring", stiffness: 420, damping: 34 }}
                     />
                   )}
@@ -88,7 +88,7 @@ export function SiteHeader() {
             <Link
               href="/admin"
               title="Kitchen console"
-              className="glass-brass hidden h-10 items-center gap-2 rounded-xl px-3 text-xs text-brass-300 transition hover:brightness-125 sm:inline-flex"
+              className="glass-sage hidden h-10 items-center gap-2 rounded-xl px-3 text-xs text-sage-300 transition hover:brightness-125 sm:inline-flex"
             >
               <LayoutDashboard size={15} aria-hidden />
               Kitchen
@@ -118,7 +118,7 @@ export function SiteHeader() {
           <button
             onClick={() => setCartOpen(true)}
             aria-label={`Cart, ${count} item${count === 1 ? "" : "s"}`}
-            className="glass relative flex h-10 items-center gap-2 rounded-xl px-3 text-cream transition hover:border-brass/40"
+            className="glass relative flex h-10 items-center gap-2 rounded-xl px-3 text-cream transition hover:border-sage/45"
           >
             <ShoppingBag size={17} aria-hidden />
             {count > 0 && (
@@ -127,7 +127,7 @@ export function SiteHeader() {
                 initial={{ scale: 0.6, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 520, damping: 22 }}
-                className="tnum absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-brass px-1 text-[0.6875rem] font-semibold text-ink"
+                className="tnum absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-sage px-1 text-[0.6875rem] font-semibold text-ink"
               >
                 {count}
               </motion.span>
@@ -147,7 +147,7 @@ export function SiteHeader() {
                 href={l.href}
                 className={cn(
                   "flex-1 py-3 text-center text-xs transition-colors",
-                  active ? "text-brass-300" : "text-stone",
+                  active ? "text-sage-300" : "text-stone",
                 )}
               >
                 {l.label}
@@ -155,7 +155,7 @@ export function SiteHeader() {
             );
           })}
           {isAdmin && (
-            <Link href="/admin" className="flex-1 py-3 text-center text-xs text-brass-300">
+            <Link href="/admin" className="flex-1 py-3 text-center text-xs text-sage-300">
               Kitchen
             </Link>
           )}
