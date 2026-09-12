@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Parallax } from "@/components/ui/Parallax";
 import { CountUp } from "@/components/ui/CountUp";
+import { Engraving } from "@/components/ui/Engraving";
 import { dishImage } from "@/lib/dish-image";
 import { STORE, CATEGORIES } from "@/data/menu";
 
@@ -25,6 +26,8 @@ export function About() {
 
   return (
     <section className="relative overflow-hidden py-24 sm:py-32">
+      <Engraving kind="spices" width={440} className="-right-24 top-8 w-[28rem] opacity-100" />
+
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20">
         {/* ── Images ─────────────────────────────────────────────── */}
         <Reveal from="left" className="order-2 lg:order-1">

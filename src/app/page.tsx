@@ -5,6 +5,7 @@ import { Hero } from "@/components/home/Hero";
 import { About } from "@/components/home/About";
 import { MenuTabs } from "@/components/home/MenuTabs";
 import { SignatureBand } from "@/components/home/SignatureBand";
+import { ParallaxBand } from "@/components/home/ParallaxBand";
 import { Gallery } from "@/components/home/Gallery";
 import { Testimonials } from "@/components/home/Testimonials";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
@@ -57,6 +58,7 @@ export default function HomePage() {
       </section>
 
       <MenuTabs />
+      <ParallaxBand />
       <SignatureBand />
 
       {/* ── Combos ──────────────────────────────────────────────── */}

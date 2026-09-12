@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Plus, X } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { Engraving } from "@/components/ui/Engraving";
 import { dishImage } from "@/lib/dish-image";
 
 /**
@@ -66,6 +67,9 @@ export function Gallery() {
 
   return (
     <section className="relative overflow-hidden py-24 sm:py-32">
+      <Engraving kind="spices" width={360} distance={-55} className="-left-16 bottom-16 w-[22rem]" />
+      <Engraving kind="berries" width={340} distance={70} className="-right-16 top-12 w-[21rem]" />
+
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal className="text-center">
           <p className="eyebrow-script">From the pass</p>

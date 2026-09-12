@@ -6,6 +6,7 @@ import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
+import { Engraving } from "@/components/ui/Engraving";
 import { CATEGORIES } from "@/data/menu";
 import { dishImageWithAlias, categoryBanner } from "@/lib/dish-image";
 import { rupees, cn } from "@/lib/utils";
@@ -47,6 +48,8 @@ export function MenuTabs() {
       >
         Menu
       </span>
+
+      <Engraving kind="berries" width={380} distance={-70} className="-left-20 top-24 w-[24rem]" />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal className="text-center">
