@@ -121,6 +121,23 @@ async function keyImage(path, tol, lineArt = false) {
     push(x, y + 1);
     push(x, y - 1);
   }
+
+  // Second pass for pockets the fill could not reach — checker seen THROUGH
+  // a transparent glass bowl is enclosed by its rim, so the border fill
+  // leaves it behind. Only near-neutral greys are removed here: quinoa and
+  // rice sit in the same brightness range but are warm, so requiring
+  // r≈g≈b keys the background without eating the food.
+  for (let k = 0; k < W * H; k++) {
+    if (bg[k] || !candidate[k]) continue;
+    const i = k * 4;
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    // 14 rather than a tighter figure: glass tints what is behind it, so the
+    // trapped checker is never perfectly neutral. Quinoa and rice are warm
+    // enough (r well above b) to stay clear of this.
+    if (Math.abs(r - g) <= 14 && Math.abs(g - b) <= 14 && Math.abs(r - b) <= 14) bg[k] = 1;
+  }
   }
 
   const hard = Buffer.alloc(W * H);
