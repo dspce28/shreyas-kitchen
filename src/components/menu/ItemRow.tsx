@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, Plus } from "lucide-react";
 import { useCart } from "@/lib/cart-store";
+import { dishImageWithAlias } from "@/lib/dish-image";
 import { rupees, cn } from "@/lib/utils";
 import type { ApiMenuItem } from "@/lib/types";
 
@@ -11,6 +13,10 @@ import type { ApiMenuItem } from "@/lib/types";
  * One dish. The row is the whole interaction: pick a variant if there is
  * one, then add. No detail page — for a 50-item menu that would be five
  * taps where one will do.
+ *
+ * Dishes with a picture get a thumbnail; the rest get a typographic tile
+ * built from the dish's initial, so a half-photographed menu still looks
+ * deliberate rather than broken.
  */
 export function ItemRow({
   item,
@@ -28,6 +34,7 @@ export function ItemRow({
   const [justAdded, setJustAdded] = useState(false);
 
   const unavailable = !item.is_available || closed || disabled;
+  const image = dishImageWithAlias(item.slug);
 
   function onAdd() {
     if (unavailable) return;
@@ -47,11 +54,35 @@ export function ItemRow({
     <li
       id={item.slug}
       className={cn(
-        "group relative scroll-mt-28 border-b border-white/[0.06] py-5 transition-opacity last:border-0",
+        "group relative scroll-mt-28 border-b border-white/[0.06] py-4 transition-opacity last:border-0",
         unavailable && "opacity-45",
       )}
     >
       <div className="flex items-start gap-4">
+        {/* Thumbnail */}
+        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] sm:h-24 sm:w-24">
+          {image?.dish ? (
+            <Image
+              src={image.dish}
+              alt={item.name}
+              fill
+              sizes="96px"
+              placeholder="blur"
+              blurDataURL={image.blur}
+              className="object-cover transition-transform duration-700 ease-[var(--ease-out-quint)] group-hover:scale-[1.07]"
+            />
+          ) : (
+            <span
+              className="grid h-full w-full place-items-center font-display text-2xl text-sage/35"
+              aria-hidden
+            >
+              {item.name.charAt(0)}
+            </span>
+          )}
+          {/* Keeps the brighter photos from fighting the dark ground. */}
+          <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/45 to-transparent" />
+        </div>
+
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
             <h3 className="text-[1.0625rem] leading-snug text-cream">{item.name}</h3>
@@ -82,7 +113,11 @@ export function ItemRow({
           )}
 
           {item.options?.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-1.5" role="radiogroup" aria-label={`${item.name} options`}>
+            <div
+              className="mt-2.5 flex flex-wrap gap-1.5"
+              role="radiogroup"
+              aria-label={`${item.name} options`}
+            >
               {item.options.map((o) => (
                 <button
                   key={o}

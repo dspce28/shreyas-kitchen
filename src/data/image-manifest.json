@@ -1,0 +1,123 @@
+{
+  "lemon-tea": {
+    "slug": "lemon-tea",
+    "dish": "/menu/dish/lemon-tea.webp",
+    "wide": "/menu/wide/lemon-tea.webp",
+    "blur": "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABQBQCdASoUABQAPu1urlIppiQiqAgBMB2JYgDE9YAAX8dDLDH+wmC/c7O54iiFirX3gUAA/vGBmyBN7BLMlfWbcWBWXqxCjkE1+yF8QWGYM9v44auWBXCfQGl7lguvHaNFR5/fXU3pKuT7P200P0gME6LoOt7ZNP9HLg98+hudLNhIQHVnlcDcJN5d7S4sS3uwqA/8nH96EYNbs/lM9j/5aHZCRdcWxyDggAAA"
+  },
+  "black-coffee": {
+    "slug": "black-coffee",
+    "dish": "/menu/dish/black-coffee.webp",
+    "wide": "/menu/wide/black-coffee.webp",
+    "blur": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAAAwBQCdASoUABQAPu1ur1IppiQiqAgBMB2JZQDGfBBbJ6jGqVhdMq5lqh0evcuhNsG+QAD+wHvjDpnStHKNq2RhQF9hiM3IpRuk0TibNJ8X9qbAY04pyW0IczS46OAK2FLUVlSE4QqDgZmI+o0a/TTeSSpl7tHeIPGw05sUo/Xs/Z8qxoYaXHye+Rk8qZiBU9bMrMDwwNHHoxANh6kG7vJQKCcG9KazY8oAAA=="
+  },
+  "filter-coffee": {
+    "slug": "filter-coffee",
+    "dish": "/menu/dish/filter-coffee.webp",
+    "wide": "/menu/wide/filter-coffee.webp",
+    "blur": "data:image/webp;base64,UklGRtoAAABXRUJQVlA4IM4AAABwBQCdASoUABQAPu1ur1IppiQiqAgBMB2JZACxH4DOAbSsX12+aahLKi0GR49ZdDpoX59AAP6mT2/CMFq8HcCOFTlhoOuV+5+mAH3nOg0rI0ObmgAtNETTtcX6lrtHOsWp3m4BOzwBqZ7EuvjZZfjyp68QKZPA+8nhy1VDGnnS9Pb1f1br0YN8WC2xMCZWuB0qcou49CrX84RoxzJdeZhvwEx7nLFAVhJlRJZ5gsZQT203bBlEo0nEJd6dxYReMW96X7YRUxmm0d1ofhZgAA=="
+  },
+  "moong-dal-chilla": {
+    "slug": "moong-dal-chilla",
+    "dish": "/menu/dish/moong-dal-chilla.webp",
+    "wide": "/menu/wide/moong-dal-chilla.webp",
+    "blur": "data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAABQBQCdASoUABQAPu1wsFIppiSiqAgBMB2JagCxHzQ+A8AVyoVy9lCtJm9nO5qccdlCi9AA/OWAXJnOrA1i+R1SFrEeqfeq7fw/QETYyS3U5CxV9o/dRr2Jy8t2GdIV1FY10ISlcMz+qNzRE7j0MVfyioYrbXgKBi2kqH0KvEOEH5vHva2qaIDzDp7fnrM30PUwyInPLMuX3wTd69K99QfT/2E1iicx9S3KI2L4JPfj84zpZ/xJsXqgR/j/0tgHmsI+cWFzj6MKvjetkKu9JLs7C+AAAA=="
+  },
+  "veg-chilla": {
+    "slug": "veg-chilla",
+    "dish": "/menu/dish/veg-chilla.webp",
+    "blur": "data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAADQBQCdASoUABQAPu1ur1IppiQiqAgBMB2JagCdMw5FAkmLcyPhbAXHzYN+WNRWdtSNUiKXr6ucAP4Kx6+TiS1l/t3xPFXjGJ8slb2yJV+R7yDs4zGGozhRHF0Ckn51oRy3FhfNpFrezYAaNHg8KfAl3fxJRwkfFbL19Rm25QrKeJGEEHYezCzblJ+v4JdkwK+GoEJcHvRuubD4cQoJBegk+vXmAqC1EMeQlJyAuT26/kyc2fctLUnd/7nLr2aTuU2p49aMPba6rP9bbs1O3JB4PHYwAAAA"
+  },
+  "tomato-soup": {
+    "slug": "tomato-soup",
+    "dish": "/menu/dish/tomato-soup.webp",
+    "wide": "/menu/wide/tomato-soup.webp",
+    "blur": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAABQBQCdASoUABQAPu1qq1EppaOnKAqpMB2JaACxH0xBWQHrcfH/GwyX8lRBDaYKMn8fCwAAzhqBMmOj87MKjPzF36QQEXZpqweMQqJLRoeNWOAahcMknIkS3IRoV48h6lsRaRezIN8c4UzqpYJ/IvyB4mr+iVF8SqwunYvhLGXeGu6xbtETf//J0cHsukohy5BqYDQtEiA2os4AAAA="
+  },
+  "veg-hot-and-sour-soup": {
+    "slug": "veg-hot-and-sour-soup",
+    "dish": "/menu/dish/veg-hot-and-sour-soup.webp",
+    "blur": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAACQBQCdASoUABQAPu1ur1IppiQiqAgBMB2JQBWAZYMME0EFuQm16MLY8A3HwWFF0J+5443JgAD+as1o3rv9xHXv8AGFUYCn3YdW3J9ZTBdja4qm3ye0HSDOsAV+XiOcuxOHqZ/dcq+KOf6BNkfBzDsEGedoDH9Z0g9icCa5Hgv9KqlCEog4wMuUgbOfnwwfcpTF6JvVNcVV3EQmWs81T9Jm587dCIe6C1ywJqyNIoThh3k5x2D1tok3VrsbH8SBCTWwAAAA"
+  },
+  "peanut-salad": {
+    "slug": "peanut-salad",
+    "dish": "/menu/dish/peanut-salad.webp",
+    "wide": "/menu/wide/peanut-salad.webp",
+    "blur": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAADQBQCdASoUABQAPu1urlIppiQiqAgBMB2JZAC1F0irgPeqRvW1KWFIIa3I11HGcg+kHFKqRvRAAP5WBVFOZoUm5u0bHhSmcJ0vZsjL4mXcJUoCp9bgTk0tFqvVumP1fhhCJ29uBUVzgF1xL/XyEOetoBx9H3HJMXN23PGRuGCdOqqYiVUE1F3y4v4odPCYVP3lSrLgRm4gsqlZpL/aCPqRbboi1CYiP5eGmoRrEl4aFeWD+sBZYYzu48FxnWlBeBsfYAAA"
+  },
+  "basket-chaat": {
+    "slug": "basket-chaat",
+    "dish": "/menu/dish/basket-chaat.webp",
+    "wide": "/menu/wide/basket-chaat.webp",
+    "blur": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAABwBQCdASoUABQAPu1wsFIppiSiqAgBMB2JbACuHBEJzl5Kbs+0ggMswTBQECHKr1thaJwAAP4Za73R+RIn7F9DfruCUzIcIFr/Q+EWj9ql97Xy/bBV365TR4vjCgLUV4qRUjNbsGNvaf0T9iGz/0hGHuhKYGRSjsw87MT+9zRCGECnh/1Z8GVu27X4oNWWC5Qx3LIgvu6rpEE/iFvLHoEywSOyEVTDdV58RpsBZyaAAA=="
+  },
+  "samosa": {
+    "slug": "samosa",
+    "dish": "/menu/dish/samosa.webp",
+    "blur": "data:image/webp;base64,UklGRuYAAABXRUJQVlA4INoAAACQBQCdASoUABQAPu1ur1IppiQiqAgBMB2JbACxHzQ00dDocvpqu2w236C1U3Yemh0TYh5dQAD84fXYw0DZKTC7CfOmt2SHkDkrP0k0MB5i1TVsaAEd6WkEG/FgRP8Xyc0xZYhfb3/Z3hAE4dgBdk3V4qs8VkwYKJJ0HWLaimwEyW7OWbMx1utCB2iuqe7e6qenyoukcofm28tcDqB4r4BlyBzJqFLqAAbcUbFSxsWOw6dZzjS9jX4fB9AdrcwTv70Pb73XSviSWkHQ4pCrRoPUUVzb8pcDAAAAAA=="
+  },
+  "kachori": {
+    "slug": "kachori",
+    "dish": "/menu/dish/kachori.webp",
+    "blur": "data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAABQBQCdASoUABQAPu1ur1IppiQiqAgBMB2JZACdM1YOAbWQZeAVb1kXHCef9H1GQP33HPAA/sGBE9u8cc7f8AZ9AtyzVoFncALoeTojCElho08OADdvjMieurXbizYufEkznqsE3G5I4t7mBOh8QGMmpbZTN0C2L373XopKc8bEcC4KIUpGMPNXii1eiuhX+4fjDXW4zAkPBKIS3AzmCa9EqINqBWnJY7F8A0R9+bZwNIsQCfJY6kO+0JXDWKethe94OOPg6xeo4NULL3R8h8R354AAAA=="
+  },
+  "bhel": {
+    "slug": "bhel",
+    "dish": "/menu/dish/bhel.webp",
+    "wide": "/menu/wide/bhel.webp",
+    "blur": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAADwBACdASoUABQAPu1wsFKppiSiqAgBMB2JaACdMt8lvwl/NZmIpihHIr6aI0IJc4AA/a419z8BatOV+YiqViQBiNsGn6U1m+wRghKchvzWMqy/A+hpIuMflMMsHzb0OoxIkFz0m4hZAQ2G0iMcTETqrHh0gbwEwf5V1JAXuZShI08/QFYVo0KonSowpE+XLLRqHoralbZ8QmDxXnqkNN61jKWZ1GhoL0RidKYV9//EpgCRSnWFTQ1afKRW3lNiFidMcIVvPvAAAA=="
+  },
+  "veg-masala-oats": {
+    "slug": "veg-masala-oats",
+    "dish": "/menu/dish/veg-masala-oats.webp",
+    "blur": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAAAwBQCdASoUABQAPu1urlIppiQiqAgBMB2JZgCxH4ClyQvjK4Ka1oav5kNBLMrdl4b3oADOPWyC6bQKZJmWuZs8+e4sBp72//dsHmH0prjkGVqJBu02rHllVh0QpNTuSrYwVk6nK6AY/FU84eYZZOWnvNtOCsTcb0efb/h95BKVSoJ7M9xZcrIihTOk87sVYsLwdhJIhTKoIYiP/SVsuXzSml/vnJJSHzmW3Rupfmxi2WSiESb6EMfMYPAwpOBlJcDKRQAA"
+  },
+  "veg-handvo": {
+    "slug": "veg-handvo",
+    "dish": "/menu/dish/veg-handvo.webp",
+    "blur": "data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAABwBQCdASoUABQAPu1ur1IppiQiqAgBMB2JZgCpI68Ay3PjiZr6LC0XmXsED/N0t4KVQebgAP7q68UFtuoEhsJ6c4jSzl50MWrq799IFJy1iX9SeKKhb9OnMNMCBs3SUyxmrtueknjPxvqfQXYDLI8WZfkCV0bdvvY9+otQGOU9Uk7RswciDUoDZcfOvsjZmnouH/Y3AN6GWLPLj7I4228hV9ODsYqHUhRLpXRikODVDPC8Kv21WjLG5m7m4lQAEkAAAA=="
+  },
+  "quinoa-pulav": {
+    "slug": "quinoa-pulav",
+    "dish": "/menu/dish/quinoa-pulav.webp",
+    "wide": "/menu/wide/quinoa-pulav.webp",
+    "blur": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAABwBQCdASoUABQAPu1ur1IppiQiqAgBMB2JZgCB5a/4tjY5gYwh3q8isc5grtioaUbOJvDIAP4UzEt3uy4MbAvcxf4nkiw6tQ9qbS4OooD+ogpKz7yUH87olouxjSTssGcwTzn/UjjmP8H3MnKAeDbUFIgO4mO+96oWs3+FX9CvVj8ZZXcWy5w/U48V1cBVit44m1rHFehdyoDLyyLkQkencF1qW/Ykn1wLkUwulV9hS3Un4dcg1DbWco5CBAAA"
+  },
+  "veg-pulav": {
+    "slug": "veg-pulav",
+    "dish": "/menu/dish/veg-pulav.webp",
+    "blur": "data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAADQBQCdASoUABQAPu1srlIppaQiqAgBMB2JagCdMt18TIBz/4tjEz/cQsRc0EBsqOa/a84+OvsAAP7n/ynS3WYE0YrMlJSkPjYbAGIYoRDeGPzCr7InWIH4//hIGoRx8smsuGIZCTemlLZ1UvigufyWqasbEfDzkOVs2R0jpsdccFUkdTeYDVNvBm02xmaCuAd258IKG3pYB2uV6Bb5pZW65ZOuTJhIocymn/BneOVve1oc6p/K5sOe6cnK4znaFxyZNx4UhgSetTut1ys5bbqxb4Tlh2QAAAA="
+  },
+  "meal-of-the-day-white": {
+    "slug": "meal-of-the-day-white",
+    "dish": "/menu/dish/meal-of-the-day-white.webp",
+    "wide": "/menu/wide/meal-of-the-day-white.webp",
+    "blur": "data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAADQBQCdASoUABQAPu1wsFIppiSiqAgBMB2JZAC1G2h+AkgPc+PbGWv0mzaY3+tUBUcuJseSrlG4AP5oTqDCDvpRKG/dH4dOn5dBLNrSXblitXTtKhY3XDTsviFXzlf+bf8M5JAutPgAGCfNG7MJY7dJ7T/4Gc/wzu+wGYPJtjmrtNtN++8bheRGLKVuBXCTZV+HjQEfpip17A/LRLrf2K63/Rtt1dbIi9nHre8l8SiyYFmsSA5P7Sa3tjPtHp3bMOxxxwmIocb1gAAA"
+  },
+  "green-detox-juice": {
+    "slug": "green-detox-juice",
+    "dish": "/menu/dish/green-detox-juice.webp",
+    "wide": "/menu/wide/green-detox-juice.webp",
+    "blur": "data:image/webp;base64,UklGRuoAAABXRUJQVlA4IN4AAABQBQCdASoUABQAPu1urlIppiQiqAgBMB2JZAC22f/i1/yZ9MyvhO8yG+wPyNanmzB0vIAA/XiYhWluqT2BH9r5fIIwBgZ5J7lEFhBy6vj8pdiWVM1PORfCVQD4H5p+JIpnx5hJp2/m6dlwFFHMt5ghZl9v5+74nH/sBRsW2yEQahu7ETIIwIAzlAzEC53OuZ75fW2BxiPIb9pGS+7GCkiZYd4dylktTdlLMgcpjltXmTDUovkZExrWaQpsJqRr/4yDrDIiusNFeSEHvfrNQ3gvtiwGclW/zDjWDOkr+AA="
+  },
+  "banana-date-milkshake": {
+    "slug": "banana-date-milkshake",
+    "dish": "/menu/dish/banana-date-milkshake.webp",
+    "blur": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAQBQCdASoUABQAPu1ur1IppiQiqAgBMB2JYwB4GmiAGhBXZ8rZAxA06VHjqoMSynuAAP6EHtraE51SI1I3g9lL9KbSbFTynOOQPxKl3yLTatsJsWU5eZ3WuMtG9ylidC4CxgUYpIT0EZzpV/N895Hr/W+Z+gqfbFBljbDniGxap8K7UlP0PIJu+EQrO9Y761hEXa6osyFXlxnbpRaFDBNyzhuviWeXQLpOOkt3upftgAAA"
+  },
+  "masala-chaas": {
+    "slug": "masala-chaas",
+    "dish": "/menu/dish/masala-chaas.webp",
+    "blur": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAAAQBQCdASoUABQAPu1ur1KppiQiqAgBMB2JYwCsAd3AZhL8MNbYrq2CXtX/2n9YdAsAAP7lusbY0SodbOLveUvHmORuOV7Ow5WbFgpBtFd9GVji9PPYYjhRb3L6a98EKm1Nga6tfzOYI7sIQVdqrv0Un5Rvn/Xq8VaQAQXl2eSp43S5knt62x5mrinEAAYZp2Ym4Z0txfl/XLpNU6vKrXWSBovCYlw+Ye7zF5mV7p8D6ACDGAA="
+  },
+  "chaat-hour": {
+    "slug": "chaat-hour",
+    "dish": "/menu/dish/chaat-hour.webp",
+    "blur": "data:image/webp;base64,UklGRugAAABXRUJQVlA4INwAAACQBQCdASoUABQAPu1ur1IppiQiqAgBMB2JbACdMoKCBb/43pHBEJVamsrlBq0hRBPV4nfDhAD+kTv18LQqIjJIFSFVNOR9V94fMT27RTrlJOGlROEymqQUVWhUdWb26TZVWeCtPtJXEVIBMmhcq32zTUReZOYmdKHYMEeRNCbGMGZiXW1TwSraJAY9689uXKsVWGlfUMik1V3TR6+0rGKiYoMj4SLwSnxn+avNGAQ2+9541avb2oaSI4+wE4J1pZHD8f7HS/9OjqkwB4GdgX9/r92HHZzPROiARFgA"
+  },
+  "category-juices-shakes": {
+    "slug": "category-juices-shakes",
+    "wide": "/menu/wide/category-juices-shakes.webp",
+    "blur": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAAAQBQCdASoUABQAPu1oqU+ppaOiKA1RMB2JZgC7AdwAWa/tstSIUdLLTM0aXPERymAAAP38YgZWMV5W4srhC7cUnL0STzUImA/m+jtan31758cb49ftS/xfpALPy6/LVj9/rxVgOdRPSAorBoanY/MSypVyo2iaANQiY88kU9xxwGg0EEV/s2kd2gKtS3NWZpBgFSWdvRgsfgMcgyD2Ac3jvjwc/PANPoYH3f9q61rBpNwyVyOgtbg50QhoFvLgAAA="
+  }
+}

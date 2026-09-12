@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock, Leaf, Sparkles } from "lucide-react";
 import { STORE, CATEGORIES, COMBOS } from "@/data/menu";
+import { dishImageWithAlias } from "@/lib/dish-image";
 import { Hero } from "@/components/home/Hero";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -30,7 +32,9 @@ const PILLARS = [
 
 export default function HomePage() {
   const favourites = CATEGORIES.flatMap((c) =>
-    c.items.filter((i) => i.favourite).map((i) => ({ ...i, category: c.name })),
+    c.items
+      .filter((i) => i.favourite)
+      .map((i) => ({ ...i, category: c.name, image: dishImageWithAlias(i.slug) })),
   );
 
   return (
@@ -93,14 +97,31 @@ export default function HomePage() {
               <Reveal key={f.slug} delay={i * 0.07}>
                 <Link
                   href={`/menu#${f.slug}`}
-                  className="group relative block h-full overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-gradient-to-b from-white/[0.055] to-transparent p-6 transition-all duration-500 hover:border-sage/35 hover:shadow-[var(--shadow-sage)]"
+                  className="group relative block h-full overflow-hidden rounded-[1.75rem] border border-white/[0.08] transition-all duration-500 hover:border-sage/35 hover:shadow-[var(--shadow-sage)]"
                 >
-                  {/* Brass wash that lifts on hover. */}
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_0%,rgba(156,191,143,0.15),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="relative">
-                    <p className="eyebrow text-[0.5625rem] text-brass/70">{f.category}</p>
-                    <h3 className="mt-3 text-2xl leading-tight text-cream">{f.name}</h3>
-                    <p className="mt-2 text-[0.8125rem] leading-relaxed text-sand">
+                  {/* The photo is the card. Type sits on a gradient scrim so
+                      it stays legible over whatever the image happens to be. */}
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    {f.image?.dish ? (
+                      <Image
+                        src={f.image.dish}
+                        alt={f.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        placeholder="blur"
+                        blurDataURL={f.image.blur}
+                        className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out-quint)] group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-b from-white/[0.06] to-transparent" />
+                    )}
+                    <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-transparent" />
+                  </div>
+
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <p className="eyebrow text-[0.5625rem] text-brass/80">{f.category}</p>
+                    <h3 className="mt-2 text-2xl leading-tight text-cream">{f.name}</h3>
+                    <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-cream-dim/90">
                       {f.description}
                     </p>
                   </div>

@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import { Search, Clock, X } from "lucide-react";
 import { useMenu } from "@/lib/use-menu";
 import { ItemRow } from "./ItemRow";
 import { PreviewBanner } from "./PreviewBanner";
+import { categoryBanner } from "@/lib/dish-image";
 import { minutesToLabel, cn } from "@/lib/utils";
 import type { ApiMenuItem } from "@/lib/types";
 
@@ -144,6 +146,7 @@ export function MenuBrowser() {
 
         {filtered.map((c) => {
           const closed = !c.is_open_now;
+          const banner = categoryBanner(c.slug);
           return (
             <section
               key={c.slug}
@@ -153,6 +156,27 @@ export function MenuBrowser() {
               }}
               className="scroll-mt-32 pt-14"
             >
+              {/* Section banner. The gradient is doing real work: these are
+                  bright daylight photos on a dark green page, and without it
+                  each one reads as a glowing rectangle. */}
+              {banner?.wide && (
+                <div className="relative mb-6 h-40 overflow-hidden rounded-[1.5rem] border border-white/[0.08] sm:h-52">
+                  <Image
+                    src={banner.wide}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, 768px"
+                    placeholder="blur"
+                    blurDataURL={banner.blur}
+                    className="object-cover"
+                  />
+                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/10" />
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <p className="eyebrow text-sage-300/80">{c.items.length} dishes</p>
+                  </div>
+                </div>
+              )}
+
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h2 className="text-3xl text-cream sm:text-4xl">{c.name}</h2>
                 {c.window_label && (
