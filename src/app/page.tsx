@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock, Leaf, Sparkles } from "lucide-react";
+import { Parallax } from "@/components/ui/Parallax";
 import { STORE, COMBOS } from "@/data/menu";
 import { Hero } from "@/components/home/Hero";
 import { About } from "@/components/home/About";
@@ -82,6 +84,38 @@ export default function HomePage() {
             >
               Combos
             </span>
+
+            {/* The pairing, made literal: a samosa and a cup of chai sitting
+                at opposite corners of the panel, drifting against each other
+                on scroll. Hidden on phones — at that width they would sit on
+                top of the headline rather than around it. */}
+            <Parallax
+              distance={54}
+              className="pointer-events-none absolute -left-6 bottom-2 hidden w-40 sm:block lg:w-52"
+            >
+              <Image
+                src="/menu/cutout/samosa-pair.webp"
+                alt=""
+                width={420}
+                height={300}
+                aria-hidden
+                className="h-auto w-full drop-shadow-[0_16px_28px_rgba(0,0,0,0.5)]"
+              />
+            </Parallax>
+            <Parallax
+              distance={-70}
+              className="pointer-events-none absolute -right-4 top-4 hidden w-32 sm:block lg:w-40"
+            >
+              <Image
+                src="/menu/cutout/chai-cup-clay.webp"
+                alt=""
+                width={380}
+                height={360}
+                aria-hidden
+                className="h-auto w-full drop-shadow-[0_16px_28px_rgba(0,0,0,0.5)]"
+              />
+            </Parallax>
+
             <div className="relative mx-auto max-w-2xl">
               <p className="eyebrow-script">{COMBOS.length} pairings</p>
               <h2 className="mt-2 text-[2rem] sm:text-5xl">

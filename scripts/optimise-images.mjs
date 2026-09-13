@@ -154,6 +154,7 @@ const IMAGES = [
   { file: "Gemini_Generated_Image_kb3gchkb3gchkb3g.png", slug: "lemon-green-tea" },
   { file: "Gemini_Generated_Image_y72vsiy72vsiy72v.png", slug: "ginger-green-tea" },
   { file: "Gemini_Generated_Image_88fxhx88fxhx88fx.png", slug: "mint-green-tea" },
+  { file: "Gemini_Generated_Image_q1fhdbq1fhdbq1fh.png", slug: "tulsi-green-tea" },
   { file: "Gemini_Generated_Image_mdnfp2mdnfp2mdnf.png", slug: "cold-coffee" },
   { file: "Gemini_Generated_Image_yahziiyahziiyahz.png", slug: "cinnamon-coffee" },
   { file: "Gemini_Generated_Image_cpmxo4cpmxo4cpmx.png", slug: "whole-wheat-cookies" },

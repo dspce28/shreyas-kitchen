@@ -147,7 +147,11 @@ export function MenuTabs() {
                     className="group flex items-start gap-4"
                   >
                     {img?.dish && (
-                      <div className="relative hidden h-14 w-14 shrink-0 overflow-hidden rounded-full sm:block">
+                      // Circular crop, so hovering can turn it like a plate
+                      // on a wheel. A square thumbnail rotating would show
+                      // its corners sweeping and read as a broken transform;
+                      // inside a circle there is no corner to give it away.
+                      <div className="relative hidden h-14 w-14 shrink-0 overflow-hidden rounded-full ring-1 ring-white/10 transition-shadow duration-500 group-hover:ring-tan/40 sm:block">
                         <Image
                           src={img.dish}
                           alt=""
@@ -155,7 +159,7 @@ export function MenuTabs() {
                           sizes="56px"
                           placeholder="blur"
                           blurDataURL={img.blur}
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:rotate-[38deg]"
                         />
                       </div>
                     )}

@@ -24,15 +24,20 @@ import { Engraving } from "@/components/ui/Engraving";
  *   3  near flecks               beans and mint, 2–3x the plate's travel
  */
 
-/** Foreground flecks. Hand-placed so nothing lands on the plate's centre. */
+/**
+ * Foreground flecks — chilli, bay leaf and star anise from the spice
+ * scatter. Hand-placed so nothing lands on the plate's centre, and the two
+ * chillies sit opposite each other: they are the only saturated colour in
+ * the palette, so clustering them would pull the eye off the plate.
+ */
 const FLECKS = [
-  { src: "p13", top: "6%", left: "4%", size: 58, distance: -150, delay: 0 },
-  { src: "p09", top: "18%", left: "86%", size: 66, distance: -190, delay: 0.6 },
-  { src: "p10", top: "70%", left: "2%", size: 52, distance: -130, delay: 1.2 },
-  { src: "p03", top: "84%", left: "72%", size: 46, distance: -170, delay: 0.3 },
-  { src: "p11", top: "44%", left: "94%", size: 44, distance: -110, delay: 1.6 },
-  { src: "p05", top: "88%", left: "34%", size: 40, distance: -145, delay: 0.9 },
-  { src: "p06", top: "2%", left: "56%", size: 38, distance: -125, delay: 1.4 },
+  { src: "s00", top: "6%", left: "3%", size: 64, distance: -150, delay: 0 },
+  { src: "s03", top: "16%", left: "84%", size: 54, distance: -190, delay: 0.6 },
+  { src: "s12", top: "70%", left: "1%", size: 50, distance: -130, delay: 1.2 },
+  { src: "s08", top: "84%", left: "70%", size: 58, distance: -170, delay: 0.3 },
+  { src: "s10", top: "42%", left: "93%", size: 44, distance: -110, delay: 1.6 },
+  { src: "s13", top: "88%", left: "32%", size: 40, distance: -145, delay: 0.9 },
+  { src: "s04", top: "2%", left: "54%", size: 46, distance: -125, delay: 1.4 },
 ] as const;
 
 export function SignatureBand() {
@@ -86,14 +91,14 @@ export function SignatureBand() {
           />
 
           {/* Layer 2 — the plate on a turntable.
-              A continuous in-plane revolution, linear and endless: the plate
-              is photographed from above, so spinning it about the axis
-              pointing at the camera is exactly what a lazy susan does. Easing
-              would give it a visible start and stop; linear is what makes it
-              read as something that was already turning before you arrived.
-              60s is slow enough that it is noticed on the second look.
-              Speed is deliberately constant — changing an animation's
-              duration mid-cycle restarts it, and the plate visibly jumps. */}
+              This photograph is shot straight down, so the plate is a true
+              circle with no perspective on the katori walls. That is the
+              whole reason a full revolution works here and did not on the
+              previous image, which was taken at about 35° — spinning an
+              ellipse in its own plane reads as tumbling, not turning.
+              Linear and endless: any easing gives it a visible start and
+              stop, where linear reads as something that was already turning
+              before you arrived. */}
           <Parallax distance={44} className="absolute inset-0 grid place-items-center">
             {/* Hover lift lives on its own wrapper. Folding a scale into the
                 spinning element would share one transition with the rotation
@@ -109,9 +114,9 @@ export function SignatureBand() {
               >
                 <Image
                   src="/menu/cutout/thali-plate.webp"
-                  alt="A brass thali — dal, two sabzis, rice, roti and pickle"
-                  width={900}
-                  height={401}
+                  alt="A steel thali — dal, paneer, two sabzis, rice, roti, salad, raita and pickle"
+                  width={1000}
+                  height={1000}
                   sizes="(max-width: 1024px) 80vw, 40vw"
                   className="h-auto w-full drop-shadow-[0_28px_50px_rgba(0,0,0,0.55)]"
                 />

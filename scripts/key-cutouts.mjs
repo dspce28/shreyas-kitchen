@@ -27,10 +27,22 @@ const JOBS = [
   // this script can infer, particularly around the glass bowl's rim and the
   // thali's thin steel edge, where our key left residue.
   {
-    file: "Gemini_Generated_Image_mlizwmmlizwmmliz-removebg-preview.png",
+    // Shot straight down, so the plate is a true circle with no perspective
+    // on the katori walls. That is what makes a turntable spin work — the
+    // earlier plate was photographed at ~35 degrees, an ellipse, and
+    // rotating it in plane read as tumbling rather than turning.
+    file: "Gemini_Generated_Image_8b60c08b60c08b60-removebg-preview.png",
     slug: "thali-plate",
     preKeyed: true,
-    max: 900,
+    max: 1000,
+  },
+  {
+    // The stoneware variant. Kept for still use, not rotation: the folded
+    // napkin sits outside the plate, so it would orbit with it.
+    file: "Gemini_Generated_Image_gml3b9gml3b9gml3-removebg-preview.png",
+    slug: "thali-plate-stoneware",
+    preKeyed: true,
+    max: 1000,
   },
   {
     file: "Gemini_Generated_Image_kqaaphkqaaphkqaa-removebg-preview.png",
@@ -70,20 +82,43 @@ const JOBS = [
     lineArt: true,
   },
 
-  // ── Batch two: subjects shot on plain white ────────────────────────
-  // Easier than the checkerboards — one flat background colour, and the
-  // corner sampler reads it the same way. Tolerance stays tight because
-  // sev, pastry and cream sit close to white.
+  // ── Batch two: supplied background-removed ─────────────────────────
+  // All pre-keyed. Our own key of the white-background originals dropped
+  // every red chilli — chilli red is far from white, but the thin dried
+  // stalks fell under the blob-size floor and took the pod with them.
+  // The hand-cut mattes keep them.
   {
-    file: "Gemini_Generated_Image_jxbd7ajxbd7ajxbd.png",
+    file: "Gemini_Generated_Image_jxbd7ajxbd7ajxbd-removebg-preview.png",
     slug: "spice-scatter",
-    tol: 16,
+    preKeyed: true,
     max: 1200,
-    // Chillies, bay leaves, star anise and peppercorns, each its own blob.
-    explode: { count: 12, minPx: 500, pad: 5, prefix: "s" },
+    // Chilli, bay leaf, star anise, cumin, peppercorn — each its own blob.
+    explode: { count: 16, minPx: 260, pad: 4, prefix: "s", allowEdge: true },
   },
-  { file: "Gemini_Generated_Image_o6eb8bo6eb8bo6eb.png", slug: "samosa-pair", tol: 16, max: 700 },
-  { file: "Gemini_Generated_Image_n7dn3cn7dn3cn7dn.png", slug: "chai-cup", tol: 14, max: 700 },
+  {
+    file: "Gemini_Generated_Image_o6eb8bo6eb8bo6eb-removebg-preview.png",
+    slug: "samosa-pair",
+    preKeyed: true,
+    max: 700,
+  },
+  {
+    file: "Gemini_Generated_Image_k0rlvtk0rlvtk0rl-removebg-preview.png",
+    slug: "samosa-pair-alt",
+    preKeyed: true,
+    max: 700,
+  },
+  {
+    file: "Gemini_Generated_Image_n7dn3cn7dn3cn7dn-removebg-preview.png",
+    slug: "chai-cup",
+    preKeyed: true,
+    max: 700,
+  },
+  {
+    file: "Gemini_Generated_Image_9hjk7c9hjk7c9hjk-removebg-preview.png",
+    slug: "chai-cup-clay",
+    preKeyed: true,
+    max: 700,
+  },
 ];
 
 const near = (d, i, c, tol) =>
@@ -340,10 +375,17 @@ async function run() {
           `passing(>=${job.explode.minPx}px)=${blobs.length}`,
       );
       // Blobs touching the frame edge are cut in half by it and export with
-      // an obvious straight side, so they are dropped rather than shipped.
-      const whole = blobs.filter(
-        (b) => b.left > 2 && b.top > 2 && b.left + b.width < W - 2 && b.top + b.height < H - 2,
-      );
+      // an obvious straight side, so they are normally dropped.
+      //
+      // `allowEdge` overrides that. In the spice scatter every red chilli
+      // runs off an edge — they are the longest objects in a frame composed
+      // as a border — so the filter silently removed the entire chilli
+      // family and shipped only leaves and seeds.
+      const whole = job.explode.allowEdge
+        ? blobs
+        : blobs.filter(
+            (b) => b.left > 2 && b.top > 2 && b.left + b.width < W - 2 && b.top + b.height < H - 2,
+          );
       const take = whole.slice(0, job.explode.count);
 
       let n = 0;

@@ -29,13 +29,14 @@ import * as THREE from "three";
  *     the cost.
  */
 
-// Two families: `p` is the coffee-and-mint scatter, `s` the spice drawer —
-// bay leaf, star anise, cumin, peppercorn. Mixing them is what stops the
-// foreground reading as the same bean tumbling past twelve times.
-const PARTICLE_TEXTURES = [
-  ...Array.from({ length: 14 }, (_, i) => `/menu/particle/p${String(i).padStart(2, "0")}.webp`),
-  ...Array.from({ length: 12 }, (_, i) => `/menu/particle/s${String(i).padStart(2, "0")}.webp`),
-];
+// The spice drawer: red chilli, bay leaf, star anise, cumin, peppercorn.
+// The coffee-and-mint set (`p*`) is still on disk but no longer used here —
+// chilli red is the only saturated colour in the whole palette, and against
+// a slate ground it carries far better than brown beans did.
+const PARTICLE_TEXTURES = Array.from(
+  { length: 16 },
+  (_, i) => `/menu/particle/s${String(i).padStart(2, "0")}.webp`,
+);
 
 const SLATE = "#1e242b";
 

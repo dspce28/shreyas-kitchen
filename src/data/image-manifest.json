@@ -187,6 +187,11 @@
     "dish": "/menu/dish/mint-green-tea.webp",
     "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAwBACdASoUABQAPu1ur1IppiQiqAgBMB2JQAAFzrRQJnpNEfX7mqbMUwAA/vQk53vnFf9ZEobqXJeueT58TUkM0/XpRTZdU0h0W6+dyFzivj4d5uY/uwYzo5D4UDKtBkI7qZGQNElcyAKJqlh37H/YpUGYPiPa4gAAAA=="
   },
+  "tulsi-green-tea": {
+    "slug": "tulsi-green-tea",
+    "dish": "/menu/dish/tulsi-green-tea.webp",
+    "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADwBACdASoUABQAPu1wsFIppiSiqAgBMB2JQBb3AhvVREH70Luou4qckEAm6NSMgwAA/vQp4UejNuuHIn8n8Vr9swKRk7wNExLzH8cYkRJ4jr4rmu5faxGTB2SM2DvBcvWZnm1Itx6fC3iNwWpTJ3HAu7Y/Ei62dmQNRRIJ4zYR7RDYlZDJQ+m9Gi85MwgA"
+  },
   "cold-coffee": {
     "slug": "cold-coffee",
     "dish": "/menu/dish/cold-coffee.webp",

@@ -17,26 +17,39 @@ import { dishImage } from "@/lib/dish-image";
  * more bytes than the feature.
  */
 
+/**
+ * Twelve, ordered so the two lighting setups alternate rather than clumping.
+ * A run of dark drink shots followed by a run of bright plated ones reads as
+ * two galleries stitched together.
+ */
 const SHOTS = [
   "basket-chaat",
+  "masala-tea",
   "meal-of-the-day-white",
+  "cold-coffee",
   "quinoa-pulav",
   "filter-coffee",
-  "bhel",
+  "suji-veg-uttapam",
   "green-detox-juice",
   "veg-handvo",
-  "tomato-soup",
+  "lemon-green-tea",
+  "carrot-coriander-soup",
+  "beet-carrot-juice",
 ] as const;
 
 const CAPTIONS: Record<string, string> = {
   "basket-chaat": "Basket Chaat",
+  "masala-tea": "Masala Tea",
   "meal-of-the-day-white": "Meal of the Day",
+  "cold-coffee": "Cold Coffee",
   "quinoa-pulav": "Quinoa Pulav",
   "filter-coffee": "Filter Coffee",
-  bhel: "Bhel",
+  "suji-veg-uttapam": "Suji Veg Uttapam",
   "green-detox-juice": "Green Detox Juice",
   "veg-handvo": "Veg Handvo",
-  "tomato-soup": "Tomato Soup",
+  "lemon-green-tea": "Lemon Green Tea",
+  "carrot-coriander-soup": "Carrot & Coriander Soup",
+  "beet-carrot-juice": "Beet & Carrot Juice",
 };
 
 export function Gallery() {
@@ -86,9 +99,9 @@ export function Gallery() {
           {SHOTS.map((slug, i) => {
             const img = dishImage(slug);
             if (!img?.dish) return null;
-            // Two tiles per row of eight get a taller aspect, so the grid
-            // has a rhythm instead of reading as a contact sheet.
-            const tall = i === 0 || i === 5;
+            // Three of the twelve get a taller aspect, so the grid has a
+            // rhythm instead of reading as a contact sheet.
+            const tall = i === 0 || i === 5 || i === 8;
             return (
               <RevealItem key={slug} className={tall ? "row-span-2" : undefined}>
                 <button
