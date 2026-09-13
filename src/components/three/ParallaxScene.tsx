@@ -29,10 +29,13 @@ import * as THREE from "three";
  *     the cost.
  */
 
-const PARTICLE_TEXTURES = Array.from(
-  { length: 14 },
-  (_, i) => `/menu/particle/p${String(i).padStart(2, "0")}.webp`,
-);
+// Two families: `p` is the coffee-and-mint scatter, `s` the spice drawer —
+// bay leaf, star anise, cumin, peppercorn. Mixing them is what stops the
+// foreground reading as the same bean tumbling past twelve times.
+const PARTICLE_TEXTURES = [
+  ...Array.from({ length: 14 }, (_, i) => `/menu/particle/p${String(i).padStart(2, "0")}.webp`),
+  ...Array.from({ length: 12 }, (_, i) => `/menu/particle/s${String(i).padStart(2, "0")}.webp`),
+];
 
 const SLATE = "#1e242b";
 

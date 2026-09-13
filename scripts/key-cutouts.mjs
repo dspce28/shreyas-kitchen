@@ -69,6 +69,21 @@ const JOBS = [
     max: 640,
     lineArt: true,
   },
+
+  // ── Batch two: subjects shot on plain white ────────────────────────
+  // Easier than the checkerboards — one flat background colour, and the
+  // corner sampler reads it the same way. Tolerance stays tight because
+  // sev, pastry and cream sit close to white.
+  {
+    file: "Gemini_Generated_Image_jxbd7ajxbd7ajxbd.png",
+    slug: "spice-scatter",
+    tol: 16,
+    max: 1200,
+    // Chillies, bay leaves, star anise and peppercorns, each its own blob.
+    explode: { count: 12, minPx: 500, pad: 5, prefix: "s" },
+  },
+  { file: "Gemini_Generated_Image_o6eb8bo6eb8bo6eb.png", slug: "samosa-pair", tol: 16, max: 700 },
+  { file: "Gemini_Generated_Image_n7dn3cn7dn3cn7dn.png", slug: "chai-cup", tol: 14, max: 700 },
 ];
 
 const near = (d, i, c, tol) =>
@@ -364,10 +379,11 @@ async function run() {
           }
         }
 
+        const prefix = job.explode.prefix ?? "p";
         await sharp(cut, { raw: { width: cw, height: chh, channels: 4 } })
           .resize(160, 160, { fit: "inside", withoutEnlargement: true })
           .webp({ quality: 90, alphaQuality: 100, effort: 5 })
-          .toFile(join(PARTICLE, `p${String(n).padStart(2, "0")}.webp`));
+          .toFile(join(PARTICLE, `${prefix}${String(n).padStart(2, "0")}.webp`));
         n++;
       }
       console.log(

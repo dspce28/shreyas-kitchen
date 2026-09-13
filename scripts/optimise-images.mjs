@@ -143,6 +143,57 @@ const IMAGES = [
     banner: true,
     bannerOnly: true,
   },
+
+  // ── Batch two: the remaining dishes and the combos ─────────────────
+  // Tea and coffee, shot on the dark counter.
+  { file: "Gemini_Generated_Image_nje14knje14knje1.png", slug: "plain-black-tea" },
+  { file: "Gemini_Generated_Image_cegnddcegnddcegn.png", slug: "masala-tea", banner: true },
+  { file: "Gemini_Generated_Image_nz4zxgnz4zxgnz4z.png", slug: "ginger-tea" },
+  { file: "Gemini_Generated_Image_p1bvesp1bvesp1bv.png", slug: "tulsi-tea" },
+  { file: "Gemini_Generated_Image_jeybkujeybkujeyb.png", slug: "plain-green-tea" },
+  { file: "Gemini_Generated_Image_kb3gchkb3gchkb3g.png", slug: "lemon-green-tea" },
+  { file: "Gemini_Generated_Image_y72vsiy72vsiy72v.png", slug: "ginger-green-tea" },
+  { file: "Gemini_Generated_Image_88fxhx88fxhx88fx.png", slug: "mint-green-tea" },
+  { file: "Gemini_Generated_Image_mdnfp2mdnfp2mdnf.png", slug: "cold-coffee" },
+  { file: "Gemini_Generated_Image_yahziiyahziiyahz.png", slug: "cinnamon-coffee" },
+  { file: "Gemini_Generated_Image_cpmxo4cpmxo4cpmx.png", slug: "whole-wheat-cookies" },
+  { file: "Gemini_Generated_Image_ammpgzammpgzammp.png", slug: "multigrain-cookies" },
+
+  // Breakfast.
+  { file: "Gemini_Generated_Image_fku8t2fku8t2fku8.png", slug: "suji-dhokla" },
+  { file: "Gemini_Generated_Image_i8emjxi8emjxi8em.png", slug: "poha" },
+  { file: "Gemini_Generated_Image_j679i3j679i3j679.png", slug: "veg-upma" },
+  { file: "Gemini_Generated_Image_eya2xseya2xseya2.png", slug: "suji-veg-uttapam" },
+
+  // Soup, salads, snacks, rice.
+  { file: "Gemini_Generated_Image_ehk50iehk50iehk5.png", slug: "carrot-coriander-soup" },
+  { file: "Gemini_Generated_Image_o3tpujo3tpujo3tp.png", slug: "sprouted-moong-salad" },
+  { file: "Gemini_Generated_Image_5a0m7m5a0m7m5a0m.png", slug: "veg-salad" },
+  { file: "Gemini_Generated_Image_e1dw00e1dw00e1dw.png", slug: "veg-pasta" },
+  { file: "Gemini_Generated_Image_4h6ria4h6ria4h6r.png", slug: "brown-rice-pulav" },
+
+  // Juices and shakes.
+  { file: "Gemini_Generated_Image_ze7upcze7upcze7u.png", slug: "beet-carrot-juice" },
+  { file: "Gemini_Generated_Image_64ud1g64ud1g64ud.png", slug: "lassi" },
+  { file: "Gemini_Generated_Image_jlgf1rjlgf1rjlgf.png", slug: "protein-shake" },
+
+  // ── Combos ─────────────────────────────────────────────────────────
+  // Landscape flat lays, so these carry a banner as well as a square.
+  { file: "Gemini_Generated_Image_b6dwvdb6dwvdb6dw.png", slug: "morning-start", banner: true },
+  { file: "Gemini_Generated_Image_kw2g1ykw2g1ykw2g.png", slug: "power-breakfast", banner: true },
+  { file: "Gemini_Generated_Image_eiuv5keiuv5keiuv.png", slug: "light-lunch", banner: true },
+  { file: "Gemini_Generated_Image_5ukphs5ukphs5ukp.png", slug: "tea-time", banner: true },
+  { file: "Gemini_Generated_Image_vxojdqvxojdqvxoj.png", slug: "healthy-evening", banner: true },
+
+  // ── Atmosphere ─────────────────────────────────────────────────────
+  // Not menu items. Wide, dark, overhead shots used as section grounds
+  // and parallax plates.
+  { file: "Gemini_Generated_Image_8ch1nw8ch1nw8ch1.png", slug: "scene-thali-spread", banner: true, bannerOnly: true },
+  { file: "Gemini_Generated_Image_p40x7qp40x7qp40x.png", slug: "scene-chaat", banner: true, bannerOnly: true },
+  { file: "Gemini_Generated_Image_mpfp4kmpfp4kmpfp.png", slug: "scene-soup", banner: true, bannerOnly: true },
+  { file: "Gemini_Generated_Image_ffrkqyffrkqyffrk.png", slug: "scene-pasta", banner: true, bannerOnly: true },
+  { file: "Gemini_Generated_Image_kjh1r5kjh1r5kjh1.png", slug: "scene-oats", banner: true, bannerOnly: true },
+  { file: "Gemini_Generated_Image_hovyixhovyixhovy.png", slug: "scene-coffee", banner: true, bannerOnly: true },
 ];
 
 async function run() {

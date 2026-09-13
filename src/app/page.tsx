@@ -6,6 +6,7 @@ import { About } from "@/components/home/About";
 import { MenuTabs } from "@/components/home/MenuTabs";
 import { SignatureBand } from "@/components/home/SignatureBand";
 import { ParallaxBand } from "@/components/home/ParallaxBand";
+import { ScenePanel } from "@/components/home/ScenePanel";
 import { Gallery } from "@/components/home/Gallery";
 import { Testimonials } from "@/components/home/Testimonials";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
@@ -58,6 +59,16 @@ export default function HomePage() {
       </section>
 
       <MenuTabs />
+
+      <ScenePanel
+        slug="scene-chaat"
+        script="Three till six"
+        head={["The hours the building", "waits for"]}
+        body="Baskets fried to order, chutneys ground that morning, and a counter that empties as fast as it fills. Evening snacks run from three until six, and the good stuff goes first."
+        href="/menu#evening-snacks"
+        cta="See evening snacks"
+      />
+
       <ParallaxBand />
       <SignatureBand />
 
@@ -98,6 +109,16 @@ export default function HomePage() {
       </section>
 
       <Gallery />
+
+      <ScenePanel
+        slug="scene-thali-spread"
+        script="Lunch, properly"
+        head={["Two sabzis, four", "fulka, dal and rice"]}
+        body="The meal of the day changes with what the market had that morning. Order it with white rice or brown, and it arrives the way it leaves the kitchen — hot, and all at once."
+        href="/menu#rice-and-meals"
+        cta="See the meal of the day"
+      />
+
       <Testimonials />
 
       {/* ── Closing note ────────────────────────────────────────── */}
