@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Parallax } from "@/components/ui/Parallax";
 import { Engraving } from "@/components/ui/Engraving";
+import { dishImage } from "@/lib/dish-image";
 
 /**
  * Meal of the Day, built as four parallax layers rather than a WebGL scene.
@@ -53,6 +54,10 @@ const FLECKS = [
 export function SignatureBand() {
   const reduced = useReducedMotion();
   const [hovered, setHovered] = useState(false);
+  // A laid table, thrown out of focus behind the plate. The spread shot is
+  // the right one: it is busy and warm, so once blurred it reads as a room
+  // rather than as one recognisable dish competing with the thali.
+  const backdrop = dishImage("thali-spread");
 
   return (
     <section className="relative overflow-hidden border-y border-white/[0.07]">
@@ -65,8 +70,8 @@ export function SignatureBand() {
             <span className="text-tan">the day</span>
           </h2>
           <p className="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-sand">
-            Two seasonal sabzis, four fulka roti, dal and rice — served on brass, the way it
-            is served at home. Choose white rice or brown.
+            Two seasonal sabzis, four fulka roti, dal and rice — with papad, salad, raita and
+            pickle, the way it is served at home. Choose white rice or brown.
           </p>
           <Link
             href="/menu#rice-and-meals"
@@ -83,10 +88,39 @@ export function SignatureBand() {
 
         {/* ── Layered plate ──────────────────────────────────────── */}
         <div
-          className="relative aspect-square w-full"
+          // `isolate` pins the negative-z layers below to this box. Without a
+          // stacking context they escape upward and paint behind the section
+          // itself, where the page ground hides them.
+          className="relative isolate aspect-square w-full"
           onPointerEnter={() => setHovered(true)}
           onPointerLeave={() => setHovered(false)}
         >
+          {/* Layer 0 — an out-of-focus plate of food behind the sharp one,
+              which is what gives the panel depth rather than a flat glow.
+              `sizes` deliberately asks for a tiny source: Next serves a
+              ~384px file, the browser scales it up, and the CSS blur only
+              has to smooth what is already soft. Blurring a full 1600px
+              image every frame would cost far more and look no different. */}
+          <div
+            className="pointer-events-none absolute -inset-[18%] -z-20 overflow-hidden"
+            aria-hidden
+          >
+            <div className="relative h-full w-full opacity-40 [filter:blur(26px)_saturate(1.1)]">
+              {backdrop?.wide && (
+                <Image
+                  src={backdrop.wide}
+                  alt=""
+                  fill
+                  sizes="320px"
+                  className="scale-110 object-cover"
+                />
+              )}
+            </div>
+            {/* Feathers the blurred plate into the page instead of ending on
+                a rectangle edge. */}
+            <div className="absolute inset-0 bg-[radial-gradient(closest-side,transparent_35%,var(--color-ink)_85%)]" />
+          </div>
+
           {/* Layer 1 — engraving and glow, almost static */}
           <Engraving
             kind="spices"
@@ -124,9 +158,9 @@ export function SignatureBand() {
               >
                 <Image
                   src="/menu/cutout/thali-plate.webp"
-                  alt="A steel thali — dal, paneer, two sabzis, rice, roti, salad, raita and pickle"
-                  width={1000}
-                  height={1000}
+                  alt="A thali — dal, paneer curry, sabzi, steamed rice, roti, papad, salad, raita, pickle and lime"
+                  width={1200}
+                  height={1158}
                   sizes="(max-width: 1024px) 80vw, 40vw"
                   className="h-auto w-full drop-shadow-[0_28px_50px_rgba(0,0,0,0.55)]"
                 />

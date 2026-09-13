@@ -28,13 +28,18 @@ const JOBS = [
   // thali's thin steel edge, where our key left residue.
   {
     // Shot straight down, so the plate is a true circle with no perspective
-    // on the katori walls. That is what makes a turntable spin work — the
+    // on the katori walls. That is what makes a turntable spin work — an
     // earlier plate was photographed at ~35 degrees, an ellipse, and
     // rotating it in plane read as tumbling rather than turning.
-    file: "Gemini_Generated_Image_8b60c08b60c08b60-removebg-preview.png",
+    //
+    // 5000x5000 on an opaque white ground, so it goes through the keyer
+    // rather than the pre-keyed path. Tolerance is tight: rice, raita,
+    // papad and the plate's own cream rim all sit near white, and only the
+    // border flood fill keeps the key off them.
+    file: "Untitled design (3).png",
     slug: "thali-plate",
-    preKeyed: true,
-    max: 1000,
+    tol: 12,
+    max: 1200,
   },
   {
     // The stoneware variant. Kept for still use, not rotation: the folded
