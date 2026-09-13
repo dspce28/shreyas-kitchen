@@ -21,7 +21,7 @@ import { Engraving } from "@/components/ui/Engraving";
  * Layers, slowest to fastest:
  *   1  engraving + glow          barely moves
  *   2  the thali, slowly turning
- *   3  near flecks               beans and mint, 2–3x the plate's travel
+ *   3  near flecks               spices, ~2x the plate's travel
  */
 
 /**
@@ -31,13 +31,23 @@ import { Engraving } from "@/components/ui/Engraving";
  * the palette, so clustering them would pull the eye off the plate.
  */
 const FLECKS = [
-  { src: "s00", top: "6%", left: "3%", size: 64, distance: -150, delay: 0 },
-  { src: "s03", top: "16%", left: "84%", size: 54, distance: -190, delay: 0.6 },
-  { src: "s12", top: "70%", left: "1%", size: 50, distance: -130, delay: 1.2 },
-  { src: "s08", top: "84%", left: "70%", size: 58, distance: -170, delay: 0.3 },
-  { src: "s10", top: "42%", left: "93%", size: 44, distance: -110, delay: 1.6 },
-  { src: "s13", top: "88%", left: "32%", size: 40, distance: -145, delay: 0.9 },
-  { src: "s04", top: "2%", left: "54%", size: 46, distance: -125, delay: 1.4 },
+  // Corners first. The plate is 74% of this square container and centred,
+  // so it fills roughly 13%–87% on both axes; anything inside that lands on
+  // the food. The corners are the only generous space a square leaves
+  // around an inscribed circle, so that is where these live.
+  //
+  // Parallax travel is kept under ~100px for the same reason: at the 150–190
+  // used earlier, a fleck parked above the rim would drift down onto the
+  // roti halfway through the scroll.
+  { src: "s00", top: "-4%", left: "-6%", size: 62, distance: -86, delay: 0 },
+  { src: "s03", top: "-2%", left: "92%", size: 52, distance: -96, delay: 0.6 },
+  { src: "s12", top: "82%", left: "-8%", size: 50, distance: -74, delay: 1.2 },
+  { src: "s08", top: "88%", left: "90%", size: 56, distance: -90, delay: 0.3 },
+  // Then the four edge midpoints, each pushed clear of the rim.
+  { src: "s10", top: "40%", left: "99%", size: 42, distance: -62, delay: 1.6 },
+  { src: "s13", top: "44%", left: "-11%", size: 38, distance: -68, delay: 2.1 },
+  { src: "s04", top: "-9%", left: "46%", size: 44, distance: -70, delay: 1.4 },
+  { src: "s06", top: "95%", left: "42%", size: 40, distance: -80, delay: 0.8 },
 ] as const;
 
 export function SignatureBand() {
@@ -104,7 +114,7 @@ export function SignatureBand() {
                 spinning element would share one transition with the rotation
                 and restart it on every hover. */}
             <div
-              className="w-[82%] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              className="w-[74%] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
               style={{ transform: hovered && !reduced ? "scale(1.05)" : "scale(1)" }}
             >
               <motion.div
