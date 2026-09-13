@@ -99,16 +99,31 @@ export function Gallery() {
           {SHOTS.map((slug, i) => {
             const img = dishImage(slug);
             if (!img?.dish) return null;
-            // Three of the twelve get a taller aspect, so the grid has a
-            // rhythm instead of reading as a contact sheet.
-            const tall = i === 0 || i === 5 || i === 8;
+            // Four of the twelve run double height, so the grid has a rhythm
+            // instead of reading as a contact sheet.
+            //
+            // The indices are not decorative. Twelve tiles with four of them
+            // spanning two rows cover sixteen cells — exactly four full rows
+            // of four — and 0/3/6/9 is the spacing that actually tiles it:
+            // each pair of tall tiles bookends a row, and the short ones fill
+            // between. Any other count or spacing leaves a hole in the last
+            // row, which is what was showing as a gap in the grid.
+            const tall = i % 3 === 0;
             return (
-              <RevealItem key={slug} className={tall ? "row-span-2" : undefined}>
+              <RevealItem key={slug} className={tall ? "sm:row-span-2" : undefined}>
                 <button
                   onClick={() => setOpen(i)}
                   aria-label={`View ${CAPTIONS[slug]} larger`}
                   className={`group relative block w-full overflow-hidden ${
-                    tall ? "aspect-square sm:aspect-[3/4]" : "aspect-square"
+                    // A tall tile must fill the two rows it claims, so it takes
+                    // its height from the track rather than from an aspect
+                    // ratio. Fixing it at 3/4 left it short of the span, and
+                    // the leftover strip was the second gap.
+                    //
+                    // Below sm the grid is two plain columns with no spans at
+                    // all — a square that spans two rows on a phone is the
+                    // same bug in miniature.
+                    tall ? "aspect-square sm:aspect-auto sm:h-full" : "aspect-square"
                   }`}
                 >
                   <Image

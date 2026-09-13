@@ -32,14 +32,14 @@ const JOBS = [
     // earlier plate was photographed at ~35 degrees, an ellipse, and
     // rotating it in plane read as tumbling rather than turning.
     //
-    // 5000x5000 on an opaque white ground, so it goes through the keyer
-    // rather than the pre-keyed path. Tolerance is tight: rice, raita,
-    // papad and the plate's own cream rim all sit near white, and only the
-    // border flood fill keeps the key off them.
-    file: "Untitled design (3).png",
+    // 5000x5000 and already carrying a real alpha channel, so it takes the
+    // pre-keyed path. That matters here more than usual: rice, raita, papad
+    // and the plate's cream rim all sit near white, and every version of
+    // this shot we had to key ourselves risked eating one of them.
+    file: "thali.png",
     slug: "thali-plate",
-    tol: 12,
-    max: 1200,
+    preKeyed: true,
+    max: 1400,
   },
   {
     // The stoneware variant. Kept for still use, not rotation: the folded

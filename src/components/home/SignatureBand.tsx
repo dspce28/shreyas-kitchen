@@ -159,8 +159,8 @@ export function SignatureBand() {
                 <Image
                   src="/menu/cutout/thali-plate.webp"
                   alt="A thali — dal, paneer curry, sabzi, steamed rice, roti, papad, salad, raita, pickle and lime"
-                  width={1200}
-                  height={1158}
+                  width={1400}
+                  height={1350}
                   sizes="(max-width: 1024px) 80vw, 40vw"
                   className="h-auto w-full drop-shadow-[0_28px_50px_rgba(0,0,0,0.55)]"
                 />
