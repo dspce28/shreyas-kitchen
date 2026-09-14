@@ -34,7 +34,7 @@ interface Slide {
 const SLIDES: Slide[] = [
   {
     imageSlug: "moong-dal-chilla",
-    script: "Welcome to Shreya's",
+    script: "Welcome to Shreya's Kitchen",
     head: ["Fresh", "Every Morning"],
     body: "Breakfast from eight. Chillas hit the pan when you order them, never before.",
     href: "/menu#breakfast",
